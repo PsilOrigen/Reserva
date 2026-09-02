@@ -6,27 +6,29 @@
     <title>Inicio | PsilOrigen</title>
     <style>
         body {
-            background-color: #f4efe6;
-            background-image: linear-gradient(rgba(244, 239, 230, 0.9), rgba(244, 239, 230, 0.9)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
+            background-color: #F5EDDC;
+            background-image: linear-gradient(rgba(245, 237, 220, 0.94), rgba(245, 237, 220, 0.94)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
-            color: #1e2e1e;
+            color: #3A2E24;
             margin: 0;
             padding: 20px;
         }
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #ffffff;
-            border: 2px solid #1e2e1e;
+            background-color: #F5EDDC;
+            border: 2px solid #2B3E2D;
             border-radius: 15px;
             padding: 40px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
+
+        /* CABECERA */
         .cabecera {
             text-align: center;
-            border-bottom: 2px solid #b08d57;
+            border-bottom: 2px solid #B08D57;
             padding-bottom: 25px;
             margin-bottom: 30px;
         }
@@ -41,10 +43,12 @@
         .subtitulo {
             font-size: 12px;
             letter-spacing: 5px;
-            color: #1e2e1e;
+            color: #142A1C;
             margin-top: 5px;
             text-transform: uppercase;
         }
+
+        /* MENÚ HAMBURGUESA ELEGANTE */
         .nav-container {
             position: relative;
             margin-bottom: 30px;
@@ -52,15 +56,29 @@
         }
         .menu-toggle {
             display: none;
-            background-color: #1e2e1e;
-            color: #f4efe6;
+            background-color: #142A1C;
+            color: #F5EDDC;
             border: none;
-            border-radius: 10px;
-            padding: 12px 20px;
-            font-size: 18px;
+            border-radius: 12px;
+            padding: 14px 20px;
             cursor: pointer;
-            letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #F5EDDC;
+            margin: 4px auto;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
         .nav {
             display: flex;
             flex-wrap: wrap;
@@ -68,8 +86,8 @@
             gap: 8px;
         }
         .nav a {
-            background-color: #1e2e1e;
-            color: #f4efe6;
+            background-color: #142A1C;
+            color: #F5EDDC;
             padding: 12px 25px;
             text-decoration: none;
             border-radius: 30px;
@@ -77,46 +95,75 @@
             letter-spacing: 2px;
             transition: all 0.3s;
         }
-        .nav a:hover { background-color: #b08d57; }
-        h1 { color: #b08d57; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
-        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
-        p { line-height: 1.8; font-size: 17px; color: #333; }
+        .nav a:hover { background-color: #B08D57; }
+        
+        /* Resaltar página activa */
+        .nav a.activo {
+            background-color: #B08D57;
+            box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4);
+        }
+
+        /* TÍTULOS Y TEXTOS */
+        h1 { color: #142A1C; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
+        h2 { color: #142A1C; border-bottom: 1px solid #B08D57; padding-bottom: 10px; margin-top: 40px; }
+        p { line-height: 1.8; font-size: 17px; color: #3A2E24; }
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
         .bienvenida {
-            background-color: #f9f6f0;
-            border-left: 4px solid #b08d57;
+            background-color: #F5EDDC;
+            border-left: 4px solid #B08D57;
             padding: 25px;
             margin: 30px 0;
             font-style: italic;
             text-align: center;
         }
-        .boton-cta {
-            text-align: center;
+
+        /* TARJETAS DE BOTONES */
+        .tarjetas-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
             margin-top: 40px;
         }
-        .boton-cta a {
-            background-color: #1e2e1e;
-            color: #f4efe6;
+        .tarjeta-cta {
+            flex: 1 1 220px;
+            max-width: 250px;
+            background-color: #142A1C;
+            color: #F5EDDC;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
             text-decoration: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 18px;
-            letter-spacing: 2px;
-            display: inline-block;
             transition: all 0.3s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .boton-cta a:hover { background-color: #b08d57; }
+        .tarjeta-cta:hover {
+            background-color: #B08D57;
+            transform: translateY(-3px);
+        }
+        .tarjeta-cta span { font-size: 28px; }
+        .tarjeta-cta p { margin: 0; color: inherit; font-size: 15px; line-height: 1.4; }
+
+        /* MÓVIL */
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
             p { font-size: 15px; }
-            .nav a { display: block; width: 100%; margin-bottom: 5px; }
             h1 { font-size: 26px; }
-            .menu-toggle { display: inline-block; width: 100%; text-align: center; }
-            .nav { display: none; flex-direction: column; margin-top: 10px; }
+
+            .menu-toggle { display: block; }
+            .nav { display: none; flex-direction: column; margin-top: 10px; gap: 5px; }
             .nav.open { display: flex; }
-            .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; }
+            .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
+
+            .tarjetas-cta { flex-direction: column; }
+            .tarjeta-cta { max-width: 100%; }
         }
     </style>
 </head>
@@ -129,9 +176,13 @@
     </div>
 
     <div class="nav-container">
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="nav" id="menuNav">
-            <a href="index.html">🏠 Portada</a>
+            <a href="index.html" class="activo">🏠 Portada</a>
             <a href="quienes-somos.html">🌿 Quiénes Somos</a>
             <a href="experiencia.html">🧠 Experiencia</a>
             <a href="inversion.html">💎 Inversión</a>
@@ -142,21 +193,32 @@
 
     <h1>Un espacio para volver a ti</h1>
     <p class="intro">Bienvenido/a a un viaje de introspección, sanación y reconexión con tu esencia más profunda.</p>
+
     <div class="bienvenida">
         <p><strong>PsilOrigen</strong> es un espacio seguro y acompañado donde la ciencia, la naturaleza y la sabiduría ancestral se unen para ayudarte a mirar hacia adentro.</p>
         <p>No se trata de escapar de tu vida. Se trata de volver a ella con otros ojos.</p>
     </div>
+
     <h2>¿Qué encontrarás aquí?</h2>
     <p>Un camino guiado que comienza con la preparación, continúa con una experiencia profunda y culmina con la integración de todo lo aprendido en tu día a día. Nuestro enfoque combina el respeto por la naturaleza dominicana y un acompañamiento empático y profesional.</p>
-    <div class="boton-cta">
-        <a href="quienes-somos.html">🌿 Conócenos</a>
-        <a href="experiencia.html">🧠 Ver la Experiencia</a>
+
+    <div class="tarjetas-cta">
+        <a href="quienes-somos.html" class="tarjeta-cta">
+            <span>🌿</span>
+            <p>Conócenos y descubre nuestra historia</p>
+        </a>
+        <a href="experiencia.html" class="tarjeta-cta">
+            <span>🧠</span>
+            <p>Explora la ciencia y el proceso</p>
+        </a>
     </div>
 </div>
 
 <script>
     function toggleMenu() {
+        var button = document.querySelector('.menu-toggle');
         var menu = document.getElementById('menuNav');
+        button.classList.toggle('open');
         menu.classList.toggle('open');
     }
 </script>
