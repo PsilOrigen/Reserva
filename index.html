@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Intención | PsilOrigen</title>
     <style>
-        /* 1. FONDO INMERSIVO */
+        /* Estética Opción B */
         body {
             background-color: #f4efe6;
-            background-image: linear-gradient(rgba(244, 239, 230, 0.9), rgba(244, 239, 230, 0.9)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop'); /* Bosque difuminado */
+            background-image: linear-gradient(rgba(244, 239, 230, 0.9), rgba(244, 239, 230, 0.9)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
@@ -50,7 +50,27 @@
             text-transform: uppercase;
         }
 
-        /* TÍTULOS */
+        /* NAVEGACIÓN */
+        .nav {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .nav a {
+            background-color: #1e2e1e;
+            color: #f4efe6;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 5px;
+        }
+        .nav a:hover { background-color: #b08d57; }
+
+        /* TÍTULOS Y TEXTOS */
+        h1 { color: #b08d57; letter-spacing: 2px; font-size: 28px; margin: 0; }
         .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
         h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
         p.descripcion { font-size: 15px; color: #444; font-weight: bold; margin-bottom: 10px; }
@@ -94,7 +114,7 @@
         }
         button:hover { background-color: #b08d57; }
         
-        /* 2. BOTÓN FLOTANTE WHATSAPP */
+        /* BOTÓN FLOTANTE WHATSAPP */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -118,7 +138,7 @@
         /* CIERRE */
         .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* 1. OPTIMIZACIÓN MÓVIL (Responsive) */
+        /* OPTIMIZACIÓN MÓVIL */
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { 
@@ -137,8 +157,7 @@
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP (República Dominicana) -->
-    <!-- Si usas WhatsApp Business con otro número, solo cambia el número aquí abajo -->
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">
         💬 WhatsApp
     </a>
@@ -149,6 +168,11 @@
         <div class="cabecera">
             <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
             <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
+        </div>
+
+        <!-- NAVEGACIÓN -->
+        <div class="nav">
+            <a href="quienes-somos.html">🌿 Quiénes Somos</a>
         </div>
 
         <div class="intro">
