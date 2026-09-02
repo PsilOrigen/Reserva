@@ -113,6 +113,79 @@
         }
         .whatsapp-float:hover { background-color: #128C7E; }
         .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #B08D57; padding-top: 20px; }
+        
+        /* CALENDARIO VISUAL */
+        .calendario {
+            margin-top: 15px;
+        }
+        .calendario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .calendario-header button {
+            background-color: #142A1C;
+            color: #F5EDDC;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            width: auto;
+            margin: 0;
+        }
+        .calendario-header button:hover { background-color: #B08D57; }
+        .calendario-header h3 { margin: 0; color: #142A1C; }
+        .dias-semana {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #B08D57;
+            margin-bottom: 10px;
+        }
+        .dias-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .dia {
+            background-color: #FFFFFF;
+            border: 1px solid #B08D57;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        .dia:hover { background-color: #E8F5E9; }
+        .dia.disponible { border: 2px solid #4CAF50; color: #1B5E20; }
+        .dia.ocupado { background-color: #E0E0E0; border-color: #9E9E9E; color: #757575; cursor: not-allowed; }
+        .dia.seleccionado { background-color: #B08D57; color: #F5EDDC; border-color: #B08D57; }
+        .horarios-disponibles {
+            margin-top: 20px;
+            display: none;
+        }
+        .horarios-disponibles h4 { color: #142A1C; margin-bottom: 10px; }
+        .horario-btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border: 1px solid #B08D57;
+            border-radius: 20px;
+            background-color: #FFFFFF;
+            color: #142A1C;
+            cursor: pointer;
+            font-family: 'Georgia', serif;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .horario-btn:hover { background-color: #E8F5E9; }
+        .horario-btn.seleccionado { background-color: #B08D57; color: #F5EDDC; }
+        
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
@@ -123,6 +196,8 @@
             .nav { display: none; flex-direction: column; margin-top: 10px; gap: 5px; }
             .nav.open { display: flex; }
             .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
+            .dias-grid { gap: 3px; }
+            .dia { padding: 8px; font-size: 12px; }
         }
     </style>
 </head>
@@ -130,7 +205,7 @@
     <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">💬 WhatsApp</a>
 
 <div class="contenedor">
-    <form action="https://formspree.io/f/xaeyjqkp" method="POST">
+    <form id="reservaForm" action="https://formspree.io/f/xaeyjqkp" method="POST">
         <div class="cabecera">
             <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
             <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
@@ -160,15 +235,32 @@
             Responde desde la honestidad.</p>
         </div>
 
+        <!-- CALENDARIO VISUAL -->
         <h2>Agenda tu experiencia</h2>
-        <label>Fecha deseada para la meditación *</label>
-        <input type="date" name="fecha_meditacion" required>
-        <label>Horario preferido *</label>
-        <select name="horario_meditacion" required>
-            <option value="">Selecciona una opción</option>
-            <option value="Manana_7am">Mañana - 7:00 am</option>
-            <option value="Tarde_4pm">Tarde/Noche - 04:00 pm</option>
-        </select>
+        <label>Selecciona el día de tu sesión *</label>
+        
+        <div class="calendario">
+            <div class="calendario-header">
+                <button type="button" onclick="cambiarMes(-1)">◀</button>
+                <h3 id="mesActual"></h3>
+                <button type="button" onclick="cambiarMes(1)">▶</button>
+            </div>
+            <div class="dias-semana">
+                <span>Dom</span><span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span>
+            </div>
+            <div class="dias-grid" id="calendarioGrid"></div>
+        </div>
+
+        <!-- HORARIOS (Se muestran al elegir día disponible) -->
+        <div class="horarios-disponibles" id="horariosDisponibles">
+            <h4>Selecciona tu horario:</h4>
+            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '7:00 AM')">7:00 AM</button>
+            <button type="button" class="horario-btn" onclick="selezionarHorario(this, '4:00 PM')">4:00 PM</button>
+        </div>
+
+        <!-- Inputs ocultos para enviar al formulario -->
+        <input type="hidden" name="fecha_meditacion" id="fechaSeleccionada" required>
+        <input type="hidden" name="horario_meditacion" id="horarioSeleccionado" required>
 
         <h2>1. ¿Por qué estás aquí?</h2>
         <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
@@ -267,6 +359,76 @@
         button.classList.toggle('open');
         menu.classList.toggle('open');
     }
+
+    // LÓGICA DEL CALENDARIO
+    let fechaActual = new Date();
+    let mesActual = fechaActual.getMonth();
+    let anioActual = fechaActual.getFullYear();
+    let diaSeleccionado = null;
+
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+    const diasDisponibles = [1, 3, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29]; // Ejemplo de días disponibles
+
+    function renderCalendario() {
+        const grid = document.getElementById('calendarioGrid');
+        const titulo = document.getElementById('mesActual');
+        titulo.textContent = meses[mesActual] + ' ' + anioActual;
+        grid.innerHTML = '';
+
+        let primerDia = new Date(anioActual, mesActual, 1).getDay();
+        let diasEnMes = new Date(anioActual, mesActual + 1, 0).getDate();
+
+        for (let i = 0; i < primerDia; i++) {
+            let empty = document.createElement('div');
+            empty.className = 'dia';
+            empty.style.visibility = 'hidden';
+            grid.appendChild(empty);
+        }
+
+        for (let dia = 1; dia <= diasEnMes; dia++) {
+            let div = document.createElement('div');
+            div.className = 'dia';
+            div.textContent = dia;
+
+            // Marcar días disponibles (ejemplo)
+            if (diasDisponibles.includes(dia)) {
+                div.classList.add('disponible');
+                div.onclick = function() { seleccionarDia(this, dia); };
+            } else {
+                div.classList.add('ocupado');
+            }
+
+            grid.appendChild(div);
+        }
+    }
+
+    function cambiarMes(direccion) {
+        mesActual += direccion;
+        if (mesActual < 0) { mesActual = 11; anioActual--; }
+        if (mesActual > 11) { mesActual = 0; anioActual++; }
+        renderCalendario();
+    }
+
+    function seleccionarDia(elemento, dia) {
+        // Quitar selección anterior
+        document.querySelectorAll('.dia.seleccionado').forEach(el => el.classList.remove('seleccionado'));
+        elemento.classList.add('seleccionado');
+        
+        diaSeleccionado = dia;
+        document.getElementById('fechaSeleccionada').value = anioActual + '-' + (mesActual + 1) + '-' + dia;
+        
+        // Mostrar horarios
+        document.getElementById('horariosDisponibles').style.display = 'block';
+    }
+
+    function seleccionarHorario(elemento, horario) {
+        document.querySelectorAll('.horario-btn.seleccionado').forEach(el => el.classList.remove('seleccionado'));
+        elemento.classList.add('seleccionado');
+        document.getElementById('horarioSeleccionado').value = horario;
+    }
+
+    // Inicializar
+    renderCalendario();
 </script>
 
 </body>

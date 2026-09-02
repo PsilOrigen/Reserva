@@ -24,8 +24,6 @@
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
-
-        /* CABECERA */
         .cabecera {
             text-align: center;
             border-bottom: 2px solid #B08D57;
@@ -47,8 +45,6 @@
             margin-top: 5px;
             text-transform: uppercase;
         }
-
-        /* MENÚ HAMBURGUESA ELEGANTE */
         .nav-container {
             position: relative;
             margin-bottom: 30px;
@@ -78,7 +74,6 @@
         .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
         .nav {
             display: flex;
             flex-wrap: wrap;
@@ -96,14 +91,7 @@
             transition: all 0.3s;
         }
         .nav a:hover { background-color: #B08D57; }
-        
-        /* Resaltar página activa */
-        .nav a.activo {
-            background-color: #B08D57;
-            box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4);
-        }
-
-        /* TÍTULOS Y TEXTOS */
+        .nav a.activo { background-color: #B08D57; box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4); }
         h1 { color: #142A1C; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
         h2 { color: #142A1C; border-bottom: 1px solid #B08D57; padding-bottom: 10px; margin-top: 40px; }
         p { line-height: 1.8; font-size: 17px; color: #3A2E24; }
@@ -116,8 +104,6 @@
             font-style: italic;
             text-align: center;
         }
-
-        /* TARJETAS DE BOTONES */
         .tarjetas-cta {
             display: flex;
             flex-wrap: wrap;
@@ -148,20 +134,61 @@
         }
         .tarjeta-cta span { font-size: 28px; }
         .tarjeta-cta p { margin: 0; color: inherit; font-size: 15px; line-height: 1.4; }
-
-        /* MÓVIL */
+        /* FORMULARIO LEAD MAGNET */
+        .lead-form {
+            background-color: #F5EDDC;
+            border: 2px solid #B08D57;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .lead-form h3 { color: #142A1C; margin-top: 0; font-size: 22px; }
+        .lead-form p { font-size: 15px; margin-bottom: 20px; }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #B08D57;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .lead-btn {
+            background-color: #142A1C;
+            color: #F5EDDC;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .lead-btn:hover { background-color: #B08D57; }
+        .lead-success {
+            display: none;
+            background-color: #E8F5E9;
+            color: #1B5E20;
+            border: 1px solid #2E7D32;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
             p { font-size: 15px; }
             h1 { font-size: 26px; }
-
             .menu-toggle { display: block; }
             .nav { display: none; flex-direction: column; margin-top: 10px; gap: 5px; }
             .nav.open { display: flex; }
             .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
-
             .tarjetas-cta { flex-direction: column; }
             .tarjeta-cta { max-width: 100%; }
         }
@@ -212,6 +239,24 @@
             <p>Explora la ciencia y el proceso</p>
         </a>
     </div>
+
+    <!-- LEAD MAGNET: MEDITACIÓN GRATUITA -->
+    <div class="lead-form">
+        <h3>✨ Descarga tu Meditación de Bienvenida</h3>
+        <p>Recibe un audio gratuito de 10 minutos para conectarte con tu respiración, antes de dar el siguiente paso.</p>
+        
+        <form id="leadForm" action="https://formspree.io/f/xaeyjqkp" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo electrónico" required>
+            <input type="hidden" name="tipo" value="Meditacion Gratuita">
+            <button type="submit" class="lead-btn">Descargar Meditación</button>
+        </form>
+
+        <div id="leadSuccess" class="lead-success">
+            ✅ ¡Gracias! Revisa tu correo, te hemos enviado tu meditación de bienvenida.
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -221,6 +266,24 @@
         button.classList.toggle('open');
         menu.classList.toggle('open');
     }
+
+    // Manejo del formulario Lead Magnet
+    document.getElementById('leadForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que recargue la página
+        var form = this;
+        
+        // Enviar a Formspree
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            document.getElementById('leadForm').style.display = 'none';
+            document.getElementById('leadSuccess').style.display = 'block';
+        }).catch(error => {
+            alert('Hubo un error. Por favor, intenta de nuevo.');
+        });
+    });
 </script>
 
 </body>
