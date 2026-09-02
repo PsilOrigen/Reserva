@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | PsilOrigen</title>
-     <style>
+    <style>
         body {
             background-color: #f4efe6;
             background-image: linear-gradient(rgba(244, 239, 230, 0.9), rgba(244, 239, 230, 0.9)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
@@ -15,7 +15,6 @@
             margin: 0;
             padding: 20px;
         }
-
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
@@ -25,8 +24,6 @@
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
-        /* CABECERA */
         .cabecera {
             text-align: center;
             border-bottom: 2px solid #b08d57;
@@ -34,26 +31,41 @@
             margin-bottom: 30px;
         }
         .logo-imagen {
-            max-width: 220px;       
-            width: 100%;            
-            height: auto;           
-            display: block;         
-            margin: 0 auto 15px auto; 
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); 
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
         }
-        .subtitulo { 
-            font-size: 12px; 
-            letter-spacing: 5px; 
-            color: #1e2e1e; 
+        .subtitulo {
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #1e2e1e;
             margin-top: 5px;
             text-transform: uppercase;
         }
-
-        /* NAVEGACIÓN */
-        .nav {
+        .nav-container {
+            position: relative;
+            margin-bottom: 30px;
             text-align: center;
-            margin-bottom: 40px;
-            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background-color: #1e2e1e;
+            color: #f4efe6;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
         .nav a {
             background-color: #1e2e1e;
@@ -64,148 +76,90 @@
             font-size: 14px;
             letter-spacing: 2px;
             transition: all 0.3s;
-            display: inline-block;
-            margin: 5px;
         }
         .nav a:hover { background-color: #b08d57; }
-
-        /* TÍTULOS Y TEXTOS */
-        h1 { color: #b08d57; letter-spacing: 2px; text-align: center; margin-bottom: 15px; }
-        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 50px; }
+        h1 { color: #b08d57; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
+        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
         p { line-height: 1.8; font-size: 17px; color: #333; }
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
-
-        /* DATOS DE CONTACTO */
-        .datos-contacto {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .dato {
-            flex: 1 1 200px;
+        .bienvenida {
             background-color: #f9f6f0;
-            border: 1px solid #b08d57;
-            border-radius: 10px;
-            padding: 20px;
+            border-left: 4px solid #b08d57;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
             text-align: center;
         }
-        .dato-icono {
-            font-size: 32px;
-            margin-bottom: 10px;
+        .boton-cta {
+            text-align: center;
+            margin-top: 40px;
         }
-        .dato-titulo {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e2e1e;
-            margin-bottom: 5px;
-        }
-        .dato-valor {
-            font-size: 15px;
-            color: #555;
-            word-break: break-all;
-        }
-        .dato a {
-            color: #b08d57;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .dato a:hover { color: #1e2e1e; }
-
-        /* CAMPOS DEL FORMULARIO */
-        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #b08d57;
-            border-radius: 5px;
-            background-color: #f9f6f0;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        input:focus, textarea:focus {
-            border-color: #1e2e1e;
-            background-color: #fff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(30, 46, 30, 0.3);
-        }
-        input:required:invalid, textarea:required:invalid {
-            border-color: #d9534f;
-        }
-
-        /* BOTÓN */
-        button {
+        .boton-cta a {
             background-color: #1e2e1e;
             color: #f4efe6;
-            border: none;
+            text-decoration: none;
             padding: 15px 40px;
-            font-size: 18px;
             border-radius: 30px;
-            cursor: pointer;
-            margin-top: 40px;
-            width: 100%;
+            font-size: 18px;
             letter-spacing: 2px;
+            display: inline-block;
             transition: all 0.3s;
         }
-        button:hover { background-color: #b08d57; }
-
-        /* MÓVIL */
+        .boton-cta a:hover { background-color: #b08d57; }
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
             p { font-size: 15px; }
-            
-            /* ARREGLO DE BOTONES EN CELULAR */
-            .nav a {
-                display: block;
-                width: 100%;
-                margin: 8px 0;
-                padding: 15px 0;
-                box-sizing: border-box;
-                font-size: 16px;
-            }
-            .dato { flex: 1 1 100%; }
+            .nav a { display: block; width: 100%; margin-bottom: 5px; }
+            h1 { font-size: 26px; }
+            .menu-toggle { display: inline-block; width: 100%; text-align: center; }
+            .nav { display: none; flex-direction: column; margin-top: 10px; }
+            .nav.open { display: flex; }
+            .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
 <div class="contenedor">
-    <!-- CABECERA -->
     <div class="cabecera">
         <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
         <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
     </div>
 
-    <!-- NAVEGACIÓN (Orden establecido) -->
-    <div class="nav">
-        <a href="index.html">🏠 Portada</a>
-        <a href="quienes-somos.html">🌿 Quiénes Somos</a>
-        <a href="experiencia.html">🧠 Experiencia</a>
-        <a href="inversion.html">💎 Inversión</a>
-        <a href="reserva.html">📝 Reserva</a>
-        <a href="contacto.html">📞 Contacto</a>
+    <div class="nav-container">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <div class="nav" id="menuNav">
+            <a href="index.html">🏠 Portada</a>
+            <a href="quienes-somos.html">🌿 Quiénes Somos</a>
+            <a href="experiencia.html">🧠 Experiencia</a>
+            <a href="inversion.html">💎 Inversión</a>
+            <a href="reserva.html">📝 Reserva</a>
+            <a href="contacto.html">📞 Contacto</a>
+        </div>
     </div>
 
-    <!-- CONTENIDO DE LA PORTADA -->
     <h1>Un espacio para volver a ti</h1>
     <p class="intro">Bienvenido/a a un viaje de introspección, sanación y reconexión con tu esencia más profunda.</p>
-
     <div class="bienvenida">
         <p><strong>PsilOrigen</strong> es un espacio seguro y acompañado donde la ciencia, la naturaleza y la sabiduría ancestral se unen para ayudarte a mirar hacia adentro.</p>
         <p>No se trata de escapar de tu vida. Se trata de volver a ella con otros ojos.</p>
     </div>
-
     <h2>¿Qué encontrarás aquí?</h2>
     <p>Un camino guiado que comienza con la preparación, continúa con una experiencia profunda y culmina con la integración de todo lo aprendido en tu día a día. Nuestro enfoque combina el respeto por la naturaleza dominicana y un acompañamiento empático y profesional.</p>
-
     <div class="boton-cta">
         <a href="quienes-somos.html">🌿 Conócenos</a>
         <a href="experiencia.html">🧠 Ver la Experiencia</a>
     </div>
 </div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById('menuNav');
+        menu.classList.toggle('open');
+    }
+</script>
 
 </body>
 </html>

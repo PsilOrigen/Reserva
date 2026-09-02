@@ -15,7 +15,6 @@
             margin: 0;
             padding: 20px;
         }
-
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
@@ -25,8 +24,6 @@
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
-        /* CABECERA */
         .cabecera {
             text-align: center;
             border-bottom: 2px solid #b08d57;
@@ -34,26 +31,41 @@
             margin-bottom: 30px;
         }
         .logo-imagen {
-            max-width: 220px;       
-            width: 100%;            
-            height: auto;           
-            display: block;         
-            margin: 0 auto 15px auto; 
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); 
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
         }
-        .subtitulo { 
-            font-size: 12px; 
-            letter-spacing: 5px; 
-            color: #1e2e1e; 
+        .subtitulo {
+            font-size: 12px;
+            letter-spacing: 5px;
+            color: #1e2e1e;
             margin-top: 5px;
             text-transform: uppercase;
         }
-
-        /* NAVEGACIÓN */
-        .nav {
+        .nav-container {
+            position: relative;
+            margin-bottom: 30px;
             text-align: center;
-            margin-bottom: 40px;
-            width: 100%;
+        }
+        .menu-toggle {
+            display: none;
+            background-color: #1e2e1e;
+            color: #f4efe6;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
         .nav a {
             background-color: #1e2e1e;
@@ -64,57 +76,14 @@
             font-size: 14px;
             letter-spacing: 2px;
             transition: all 0.3s;
-            display: inline-block;
-            margin: 5px;
         }
         .nav a:hover { background-color: #b08d57; }
-
-        /* TÍTULOS Y TEXTOS */
-        h1 { color: #b08d57; letter-spacing: 2px; text-align: center; margin-bottom: 15px; }
-        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 50px; }
-        p { line-height: 1.8; font-size: 17px; color: #333; }
-        .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
-
-        /* DATOS DE CONTACTO */
-        .datos-contacto {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .dato {
-            flex: 1 1 200px;
-            background-color: #f9f6f0;
-            border: 1px solid #b08d57;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-        .dato-icono {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
-        .dato-titulo {
-            font-size: 16px;
-            font-weight: bold;
-            color: #1e2e1e;
-            margin-bottom: 5px;
-        }
-        .dato-valor {
-            font-size: 15px;
-            color: #555;
-            word-break: break-all;
-        }
-        .dato a {
-            color: #b08d57;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .dato a:hover { color: #1e2e1e; }
-
-        /* CAMPOS DEL FORMULARIO */
+        h1 { color: #b08d57; letter-spacing: 2px; font-size: 28px; margin: 0; }
+        .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
+        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
+        p.descripcion { font-size: 15px; color: #444; font-weight: bold; margin-bottom: 10px; }
         label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], textarea {
+        input[type="text"], input[type="email"], input[type="tel"], textarea, select, input[type="date"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #b08d57;
@@ -124,17 +93,17 @@
             font-size: 16px;
             box-sizing: border-box;
         }
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             border-color: #1e2e1e;
             background-color: #fff;
             outline: none;
             box-shadow: 0 0 5px rgba(30, 46, 30, 0.3);
         }
-        input:required:invalid, textarea:required:invalid {
+        input:required:invalid, textarea:required:invalid, select:required:invalid {
             border-color: #d9534f;
         }
-
-        /* BOTÓN */
+        .opciones { margin-top: 10px; }
+        .opciones label { display: block; margin-bottom: 10px; font-weight: normal; font-size: 15px; }
         button {
             background-color: #1e2e1e;
             color: #f4efe6;
@@ -149,50 +118,59 @@
             transition: all 0.3s;
         }
         button:hover { background-color: #b08d57; }
-
-        /* MÓVIL */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .whatsapp-float:hover { background-color: #128C7E; }
+        .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
-            p { font-size: 15px; }
-            
-            /* ARREGLO DE BOTONES EN CELULAR */
-            .nav a {
-                display: block;
-                width: 100%;
-                margin: 8px 0;
-                padding: 15px 0;
-                box-sizing: border-box;
-                font-size: 16px;
-            }
-            .dato { flex: 1 1 100%; }
+            h2 { font-size: 20px; }
+            .whatsapp-float { padding: 12px; font-size: 14px; }
+            .menu-toggle { display: inline-block; width: 100%; text-align: center; }
+            .nav { display: none; flex-direction: column; margin-top: 10px; }
+            .nav.open { display: flex; }
+            .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; }
         }
     </style>
 </head>
 <body>
-
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">
-        💬 WhatsApp
-    </a>
+    <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">💬 WhatsApp</a>
 
 <div class="contenedor">
     <form action="https://formspree.io/f/xaeyjqkp" method="POST">
-        
         <div class="cabecera">
             <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
             <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
         </div>
 
-        <!-- NAVEGACIÓN NUEVO ORDEN -->
-        <div class="nav">
-            <a href="index.html">🏠 Portada</a>
-            <a href="quienes-somos.html">🌿 Quiénes Somos</a>
-            <a href="experiencia.html">🧠 Experiencia</a>
-            <a href="inversion.html">💎 Inversión</a>
-            <a href="reserva.html">📝 Reserva</a>
-            <a href="contacto.html">📞 Contacto</a>
+        <div class="nav-container">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="nav" id="menuNav">
+                <a href="index.html">🏠 Portada</a>
+                <a href="quienes-somos.html">🌿 Quiénes Somos</a>
+                <a href="experiencia.html">🧠 Experiencia</a>
+                <a href="inversion.html">💎 Inversión</a>
+                <a href="reserva.html">📝 Reserva</a>
+                <a href="contacto.html">📞 Contacto</a>
+            </div>
         </div>
 
         <div class="intro">
@@ -203,11 +181,9 @@
             Responde desde la honestidad.</p>
         </div>
 
-        <!-- NUEVOS CAMPOS DE AGENDA -->
         <h2>Agenda tu experiencia</h2>
         <label>Fecha deseada para la meditación *</label>
         <input type="date" name="fecha_meditacion" required>
-
         <label>Horario preferido *</label>
         <select name="horario_meditacion" required>
             <option value="">Selecciona una opción</option>
@@ -215,39 +191,29 @@
             <option value="Tarde_4pm">Tarde/Noche - 04:00 pm</option>
         </select>
 
-        <!-- SECCIÓN 1 -->
         <h2>1. ¿Por qué estás aquí?</h2>
         <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
         <textarea name="motivacion" required placeholder="Ej: Siento que necesito un espacio para mí..."></textarea>
-
         <p class="descripcion">¿Qué estás buscando en este momento de tu vida?</p>
         <textarea name="buscando" required placeholder="Ej: Claridad, calma, respuestas..."></textarea>
-
         <p class="descripcion">¿Qué te gustaría explorar dentro de ti?</p>
         <textarea name="explorar" required placeholder="Ej: Mis emociones, mis miedos, mi propósito..."></textarea>
 
-        <!-- SECCIÓN 2 -->
         <h2>2. Tu mundo interior</h2>
         <p class="descripcion">¿Cómo te sientes contigo mismo/a actualmente?</p>
         <textarea name="como_te_sientes" required></textarea>
-
         <p class="descripcion">¿Qué aspecto de tu vida ocupa más espacio en tu mente últimamente?</p>
         <textarea name="aspecto_mente" required></textarea>
-
         <p class="descripcion">¿Hay algo que llevas tiempo evitando mirar?</p>
         <textarea name="evitando_mirar" required></textarea>
-
         <p class="descripcion">¿Existe alguna emoción que sientas que necesitas comprender mejor?</p>
         <textarea name="emocion_comprender" required></textarea>
 
-        <!-- SECCIÓN 3 -->
         <h2>3. Lo que deseas explorar</h2>
         <p class="descripcion">Si pudieras obtener claridad sobre una sola cosa durante esta experiencia, ¿qué sería?</p>
         <textarea name="claridad" required></textarea>
-
         <p class="descripcion">¿Hay algo que quieras soltar, aceptar, perdonar o transformar?</p>
         <textarea name="soltar" required></textarea>
-
         <p class="descripcion">¿Qué relación tienes actualmente contigo mismo/a?</p>
         <div class="opciones">
             <label><input type="checkbox" name="relacion" value="amor"> Me trato con amor</label>
@@ -258,29 +224,22 @@
             <label><input type="text" name="relacion_otra" placeholder="Otra:"></label>
         </div>
 
-        <!-- SECCIÓN 4 -->
         <h2>4. Tu intención</h2>
         <p class="descripcion">Completa las siguientes frases:</p>
         <label>Durante esta meditación quiero permitirme…</label>
         <input type="text" name="permitirme" required placeholder="Ej: Soltar el control...">
-        
         <label>Estoy dispuesto/a a mirar…</label>
         <input type="text" name="mirar" required placeholder="Ej: Mis heridas...">
-        
         <label>Me gustaría aprender sobre mí…</label>
         <input type="text" name="aprender_mi" required placeholder="Ej: Por qué reacciono así...">
-        
         <label>Me gustaría regresar de esta experiencia con…</label>
         <input type="text" name="regresar_con" required placeholder="Ej: Paz interior...">
 
-        <!-- SECCIÓN 5 -->
         <h2>5. Tus expectativas</h2>
         <p class="descripcion">¿Qué esperas encontrar durante esta experiencia?</p>
         <textarea name="esperas_encontrar" required></textarea>
-
         <p class="descripcion">¿Qué pasaría si no recibieras una respuesta inmediata a aquello que estás buscando?</p>
         <textarea name="sin_respuesta" required></textarea>
-
         <p class="descripcion">¿Estás dispuesto/a a permitir que la experiencia se desarrolle sin intentar controlar completamente lo que ocurre?</p>
         <select name="control" required>
             <option value="">Selecciona una opción</option>
@@ -289,35 +248,27 @@
             <option value="no_seguro">No estoy seguro/a</option>
         </select>
 
-        <!-- SECCIÓN 6 -->
         <h2>6. Una mirada hacia adentro</h2>
         <p class="descripcion">Si pudieras sentarte frente a ti mismo/a durante unas horas, sin teléfono, sin trabajo, sin obligaciones y sin posibilidad de distraerte… ¿Qué crees que necesitarías decirte?</p>
         <textarea name="decirte" required></textarea>
 
-        <!-- SECCIÓN 7 -->
         <h2>7. Después de la meditación</h2>
         <p class="descripcion">¿Qué aspecto de tu vida te gustaría cuidar, cambiar o comprender mejor después de esta experiencia?</p>
         <textarea name="cuidar_despues" required></textarea>
-
         <p class="descripcion">¿Qué compromiso contigo mismo/a te gustaría llevarte?</p>
         <textarea name="compromiso" required></textarea>
-
         <p class="descripcion">¿Qué te gustaría recordar cuando regreses a tu vida cotidiana?</p>
         <textarea name="recordar" required></textarea>
 
-        <!-- MI INTENCIÓN -->
         <h2>Mi intención</h2>
         <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
         <textarea name="intencion_final" required placeholder="Escribe aquí tu intención..."></textarea>
 
-        <!-- CAMPOS DE IDENTIFICACIÓN -->
         <h2>Datos de contacto</h2>
         <label>Nombre: *</label>
         <input type="text" name="nombre" required>
-
         <label>Número de WhatsApp: *</label>
         <input type="tel" name="whatsapp" placeholder="Ej: +1 809 457 9494" required>
-
         <label>Correo electrónico: *</label>
         <input type="email" name="email" required>
 
@@ -329,6 +280,13 @@
         <button type="submit">Enviar mi intención</button>
     </form>
 </div>
+
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById('menuNav');
+        menu.classList.toggle('open');
+    }
+</script>
 
 </body>
 </html>
