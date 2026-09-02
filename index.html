@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Intención | PsilOrigen</title>
+    <title>Inicio | PsilOrigen</title>
     <style>
         /* Estética Opción B */
         body {
@@ -16,7 +16,6 @@
             margin: 0;
             padding: 20px;
         }
-
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
@@ -26,8 +25,6 @@
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
-
-        /* CABECERA */
         .cabecera {
             text-align: center;
             border-bottom: 2px solid #b08d57;
@@ -49,11 +46,9 @@
             margin-top: 5px;
             text-transform: uppercase;
         }
-
-        /* NAVEGACIÓN */
         .nav {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         .nav a {
             background-color: #1e2e1e;
@@ -68,254 +63,87 @@
             margin: 5px;
         }
         .nav a:hover { background-color: #b08d57; }
-
+        
         /* TÍTULOS Y TEXTOS */
-        h1 { color: #b08d57; letter-spacing: 2px; font-size: 28px; margin: 0; }
-        .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
+        h1 { color: #b08d57; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
         h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
-        p.descripcion { font-size: 15px; color: #444; font-weight: bold; margin-bottom: 10px; }
+        p { line-height: 1.8; font-size: 17px; color: #333; }
+        .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
 
-        /* CAMPOS */
-        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], input[type="tel"], textarea, select, input[type="date"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #b08d57;
-            border-radius: 5px;
+        /* CAJA DE MENSAJE */
+        .bienvenida {
             background-color: #f9f6f0;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            box-sizing: border-box;
+            border-left: 4px solid #b08d57;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            text-align: center;
         }
-        input:focus, textarea:focus, select:focus {
-            border-color: #1e2e1e;
-            background-color: #fff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(30, 46, 30, 0.3);
+        
+        /* BOTÓN DE ACCIÓN */
+        .boton-cta {
+            text-align: center;
+            margin-top: 40px;
         }
-
-        /* VALIDACIÓN: Mensaje cuando falta llenar */
-        input:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) {
-            border-color: #d9534f;
-        }
-        input:required:invalid, textarea:required:invalid, select:required:invalid {
-            border-color: #d9534f;
-        }
-
-        /* CHECKBOXES */
-        .opciones { margin-top: 10px; }
-        .opciones label { display: block; margin-bottom: 10px; font-weight: normal; font-size: 15px; }
-
-        /* BOTÓN */
-        button {
+        .boton-cta a {
             background-color: #1e2e1e;
             color: #f4efe6;
-            border: none;
+            text-decoration: none;
             padding: 15px 40px;
-            font-size: 18px;
             border-radius: 30px;
-            cursor: pointer;
-            margin-top: 40px;
-            width: 100%;
+            font-size: 18px;
             letter-spacing: 2px;
+            display: inline-block;
             transition: all 0.3s;
         }
-        button:hover { background-color: #b08d57; }
-        
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            text-decoration: none;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .whatsapp-float:hover { background-color: #128C7E; }
+        .boton-cta a:hover { background-color: #b08d57; }
 
-        /* CIERRE */
-        .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
-
-        /* OPTIMIZACIÓN MÓVIL */
+        /* MÓVIL */
         @media (max-width: 600px) {
             body { padding: 10px; }
-            .contenedor { 
-                padding: 20px; 
-                border: none; 
-                border-radius: 10px;
-            }
+            .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
-            h2 { font-size: 20px; }
-            .whatsapp-float { 
-                padding: 12px; 
-                font-size: 14px; 
-            }
+            p { font-size: 15px; }
+            .nav a { display: block; width: 100%; margin-bottom: 5px; }
+            h1 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">
-        💬 WhatsApp
-    </a>
-
 <div class="contenedor">
-    <form action="https://formspree.io/f/xaeyjqkp" method="POST">
-        
-        <div class="cabecera">
-            <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
-            <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
-        </div>
+    <!-- CABECERA -->
+    <div class="cabecera">
+        <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
+        <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
+    </div>
 
-        <!-- NAVEGACIÓN -->
-        <div class="nav">
-            <a href="quienes-somos.html">🌿 Quiénes Somos</a>
-        </div>
+    <!-- NAVEGACIÓN (Orden establecido) -->
+    <div class="nav">
+        <a href="index.html">🏠 Portada</a>
+        <a href="quienes-somos.html">🌿 Quiénes Somos</a>
+        <a href="experiencia.html">🧠 Experiencia</a>
+        <a href="inversion.html">💎 Inversión</a>
+        <a href="reserva.html">📝 Reserva</a>
+        <a href="contacto.html">📞 Contacto</a>
+    </div>
 
-        <div class="intro">
-            <h2>FORMULARIO DE INTENCIÓN E INTROSPECCIÓN</h2>
-            <p><b>Meditación Acompañada</b></p>
-            <p>Un espacio para escucharte antes de comenzar.<br>
-            No necesitas tener una respuesta perfecta.<br>
-            Responde desde la honestidad.</p>
-        </div>
+    <!-- CONTENIDO DE LA PORTADA -->
+    <h1>Un espacio para volver a ti</h1>
+    <p class="intro">Bienvenido/a a un viaje de introspección, sanación y reconexión con tu esencia más profunda.</p>
 
-        <!-- NUEVOS CAMPOS DE AGENDA -->
-        <h2>Agenda tu experiencia</h2>
-        <label>Fecha deseada para la meditación *</label>
-        <input type="date" name="fecha_meditacion" required>
+    <div class="bienvenida">
+        <p><strong>PsilOrigen</strong> es un espacio seguro y acompañado donde la ciencia, la naturaleza y la sabiduría ancestral se unen para ayudarte a mirar hacia adentro.</p>
+        <p>No se trata de escapar de tu vida. Se trata de volver a ella con otros ojos.</p>
+    </div>
 
-        <label>Horario preferido *</label>
-        <select name="horario_meditacion" required>
-            <option value="">Selecciona una opción</option>
-            <option value="Manana_7am">Mañana - 7:00 am</option>
-            <option value="Tarde_4pm">Tarde/Noche - 04:00 pm</option>
-        </select>
+    <h2>¿Qué encontrarás aquí?</h2>
+    <p>Un camino guiado que comienza con la preparación, continúa con una experiencia profunda y culmina con la integración de todo lo aprendido en tu día a día. Nuestro enfoque combina el respeto por la naturaleza dominicana y un acompañamiento empático y profesional.</p>
 
-        <!-- SECCIÓN 1 -->
-        <h2>1. ¿Por qué estás aquí?</h2>
-        <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
-        <textarea name="motivacion" required placeholder="Ej: Siento que necesito un espacio para mí..."></textarea>
-
-        <p class="descripcion">¿Qué estás buscando en este momento de tu vida?</p>
-        <textarea name="buscando" required placeholder="Ej: Claridad, calma, respuestas..."></textarea>
-
-        <p class="descripcion">¿Qué te gustaría explorar dentro de ti?</p>
-        <textarea name="explorar" required placeholder="Ej: Mis emociones, mis miedos, mi propósito..."></textarea>
-
-        <!-- SECCIÓN 2 -->
-        <h2>2. Tu mundo interior</h2>
-        <p class="descripcion">¿Cómo te sientes contigo mismo/a actualmente?</p>
-        <textarea name="como_te_sientes" required></textarea>
-
-        <p class="descripcion">¿Qué aspecto de tu vida ocupa más espacio en tu mente últimamente?</p>
-        <textarea name="aspecto_mente" required></textarea>
-
-        <p class="descripcion">¿Hay algo que llevas tiempo evitando mirar?</p>
-        <textarea name="evitando_mirar" required></textarea>
-
-        <p class="descripcion">¿Existe alguna emoción que sientas que necesitas comprender mejor?</p>
-        <textarea name="emocion_comprender" required></textarea>
-
-        <!-- SECCIÓN 3 -->
-        <h2>3. Lo que deseas explorar</h2>
-        <p class="descripcion">Si pudieras obtener claridad sobre una sola cosa durante esta experiencia, ¿qué sería?</p>
-        <textarea name="claridad" required></textarea>
-
-        <p class="descripcion">¿Hay algo que quieras soltar, aceptar, perdonar o transformar?</p>
-        <textarea name="soltar" required></textarea>
-
-        <p class="descripcion">¿Qué relación tienes actualmente contigo mismo/a?</p>
-        <div class="opciones">
-            <label><input type="checkbox" name="relacion" value="amor"> Me trato con amor</label>
-            <label><input type="checkbox" name="relacion" value="aceptarme"> Estoy aprendiendo a aceptarme</label>
-            <label><input type="checkbox" name="relacion" value="exigente"> Soy muy exigente conmigo</label>
-            <label><input type="checkbox" name="relacion" value="comprenderme"> Me cuesta comprenderme</label>
-            <label><input type="checkbox" name="relacion" value="cambio"> Estoy atravesando un cambio</label>
-            <label><input type="text" name="relacion_otra" placeholder="Otra:"></label>
-        </div>
-
-        <!-- SECCIÓN 4 -->
-        <h2>4. Tu intención</h2>
-        <p class="descripcion">Completa las siguientes frases:</p>
-        <label>Durante esta meditación quiero permitirme…</label>
-        <input type="text" name="permitirme" required placeholder="Ej: Soltar el control...">
-        
-        <label>Estoy dispuesto/a a mirar…</label>
-        <input type="text" name="mirar" required placeholder="Ej: Mis heridas...">
-        
-        <label>Me gustaría aprender sobre mí…</label>
-        <input type="text" name="aprender_mi" required placeholder="Ej: Por qué reacciono así...">
-        
-        <label>Me gustaría regresar de esta experiencia con…</label>
-        <input type="text" name="regresar_con" required placeholder="Ej: Paz interior...">
-
-        <!-- SECCIÓN 5 -->
-        <h2>5. Tus expectativas</h2>
-        <p class="descripcion">¿Qué esperas encontrar durante esta experiencia?</p>
-        <textarea name="esperas_encontrar" required></textarea>
-
-        <p class="descripcion">¿Qué pasaría si no recibieras una respuesta inmediata a aquello que estás buscando?</p>
-        <textarea name="sin_respuesta" required></textarea>
-
-        <p class="descripcion">¿Estás dispuesto/a a permitir que la experiencia se desarrolle sin intentar controlar completamente lo que ocurre?</p>
-        <select name="control" required>
-            <option value="">Selecciona una opción</option>
-            <option value="si">Sí</option>
-            <option value="no">No</option>
-            <option value="no_seguro">No estoy seguro/a</option>
-        </select>
-
-        <!-- SECCIÓN 6 -->
-        <h2>6. Una mirada hacia adentro</h2>
-        <p class="descripcion">Si pudieras sentarte frente a ti mismo/a durante unas horas, sin teléfono, sin trabajo, sin obligaciones y sin posibilidad de distraerte… ¿Qué crees que necesitarías decirte?</p>
-        <textarea name="decirte" required></textarea>
-
-        <!-- SECCIÓN 7 -->
-        <h2>7. Después de la meditación</h2>
-        <p class="descripcion">¿Qué aspecto de tu vida te gustaría cuidar, cambiar o comprender mejor después de esta experiencia?</p>
-        <textarea name="cuidar_despues" required></textarea>
-
-        <p class="descripcion">¿Qué compromiso contigo mismo/a te gustaría llevarte?</p>
-        <textarea name="compromiso" required></textarea>
-
-        <p class="descripcion">¿Qué te gustaría recordar cuando regreses a tu vida cotidiana?</p>
-        <textarea name="recordar" required></textarea>
-
-        <!-- MI INTENCIÓN -->
-        <h2>Mi intención</h2>
-        <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
-        <textarea name="intencion_final" required placeholder="Escribe aquí tu intención..."></textarea>
-
-        <!-- CAMPOS DE IDENTIFICACIÓN -->
-        <h2>Datos de contacto</h2>
-        <label>Nombre: *</label>
-        <input type="text" name="nombre" required>
-
-        <label>Número de WhatsApp: *</label>
-        <input type="tel" name="whatsapp" placeholder="Ej: +1 809 457 9494" required>
-
-        <label>Correo electrónico: *</label>
-        <input type="email" name="email" required>
-
-        <div class="cierre">
-            <p>No necesitas encontrar todas las respuestas hoy.<br>
-            A veces, lo más valioso de una meditación no es lo que comprendemos durante ella, sino aquello que comenzamos a observar de nosotros mismos después.</p>
-        </div>
-
-        <button type="submit">Enviar mi intención</button>
-    </form>
+    <div class="boton-cta">
+        <a href="quienes-somos.html">🌿 Conócenos</a>
+        <a href="experiencia.html">🧠 Ver la Experiencia</a>
+    </div>
 </div>
 
 </body>

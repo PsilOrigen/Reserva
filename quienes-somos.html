@@ -53,7 +53,7 @@
         /* NAVEGACIÓN */
         .nav {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         .nav a {
             background-color: #1e2e1e;
@@ -75,7 +75,7 @@
         p { line-height: 1.8; font-size: 17px; color: #333; }
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
 
-        /* IMAGEN CON PARÁMETROS EXACTOS */
+        /* IMAGEN */
         .imagen-filosofia {
             width: 100%;
             border-radius: 10px;
@@ -94,6 +94,7 @@
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
             .logo-imagen { max-width: 180px; }
             p { font-size: 15px; }
+            .nav a { display: block; width: 100%; margin-bottom: 5px; }
         }
     </style>
 </head>
@@ -106,9 +107,14 @@
         <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
     </div>
 
-    <!-- NAVEGACIÓN -->
+    <!-- NAVEGACIÓN NUEVO ORDEN -->
     <div class="nav">
-        <a href="index.html">📝 Reservar Experiencia</a>
+        <a href="index.html">🏠 Portada</a>
+        <a href="quienes-somos.html">🌿 Quiénes Somos</a>
+        <a href="experiencia.html">🧠 Experiencia</a>
+        <a href="inversion.html">💎 Inversión</a>
+        <a href="reserva.html">📝 Reserva</a>
+        <a href="contacto.html">📞 Contacto</a>
     </div>
 
     <!-- CONTENIDO -->
@@ -116,8 +122,7 @@
     
     <p class="intro">Un espacio sagrado de encuentro, introspección y sanación.</p>
 
-    <!-- IMAGEN LOCAL GENERADA CON IA -->
-    <img src="foto_meditacion.jpg" alt="Guía de meditación en el campo dominicano" class="imagen-filosofia">
+    <img src="foto_meditacion.jpg" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop';" alt="Guía de meditación en el campo dominicano" class="imagen-filosofia">
 
     <h2>Nuestra Historia</h2>
     <p>
@@ -151,7 +156,7 @@
 
     <!-- BOTÓN FINAL PARA RESERVAR -->
     <div style="text-align: center; margin-top: 30px;">
-        <a href="index.html" style="background-color: #1e2e1e; color: #f4efe6; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-size: 18px; letter-spacing: 2px; display: inline-block;">Reservar mi Experiencia</a>
+        <a href="reserva.html" style="background-color: #1e2e1e; color: #f4efe6; text-decoration: none; padding: 15px 40px; border-radius: 30px; font-size: 18px; letter-spacing: 2px; display: inline-block;">Reservar mi Experiencia</a>
     </div>
 </div>
 
