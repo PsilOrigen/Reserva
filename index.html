@@ -52,11 +52,11 @@
         h1 { color: #b08d57; letter-spacing: 2px; font-size: 28px; margin: 0; }
         .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
         h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
-        p.descripcion { font-size: 14px; color: #555; }
+        p.descripcion { font-size: 14px; color: #555; font-weight: bold; } /* NEGRITA PARA LAS PREGUNTAS */
         
         /* CAMPOS DEL FORMULARIO */
-        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], textarea, select, input[type="date"] {
+        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; } /* ETIQUETAS EN NEGRITA */
+        input[type="text"], input[type="email"], input[type="tel"], textarea, select, input[type="date"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #b08d57;
@@ -70,7 +70,7 @@
         
         /* Estilo para los checkboxes */
         .opciones { margin-top: 10px; }
-        .opciones label { display: inline-block; margin-right: 15px; font-weight: normal; }
+        .opciones label { display: inline-block; margin-right: 15px; font-weight: normal; font-size: 14px; }
         
         /* BOTÓN */
         button {
@@ -118,9 +118,8 @@
         <label>Horario preferido *</label>
         <select name="horario_meditacion" required>
             <option value="">Selecciona una opción</option>
-            <option value="Manana">Mañana</option>
-            <option value="Tarde">Tarde</option>
-            <option value="Noche">Noche</option>
+            <option value="Manana_7am">Mañana - 7:00 am</option>
+            <option value="Tarde_4pm">Tarde/Noche - 04:00 pm</option>
         </select>
 
         <!-- SECCIÓN 1 -->
@@ -222,6 +221,9 @@
         <h2>Datos de contacto</h2>
         <label>Nombre: *</label>
         <input type="text" name="nombre" required>
+
+        <label>Número de WhatsApp: *</label>
+        <input type="tel" name="whatsapp" placeholder="Ej: +52 123 456 7890" required>
 
         <label>Correo electrónico: *</label>
         <input type="email" name="email" required>
