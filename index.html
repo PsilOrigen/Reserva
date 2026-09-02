@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Intención | PsilOrigen</title>
+    <style>
+        /* Estética Opción B */
+        body {
+            background-color: #f4efe6; /* Crema */
+            font-family: 'Georgia', serif;
+            color: #1e2e1e; /* Verde Oscuro */
+            margin: 0;
+            padding: 20px;
+        }
+        .contenedor {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 2px solid #1e2e1e;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .cabecera {
+            text-align: center;
+            border-bottom: 2px solid #b08d57; /* Dorado */
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 { color: #b08d57; letter-spacing: 2px; font-size: 28px; margin: 0; }
+        .subtitulo { font-size: 14px; letter-spacing: 4px; color: #1e2e1e; }
+        .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
+        
+        h2 { color: #1e2e1e; border-bottom: 1px solid #b08d57; padding-bottom: 10px; margin-top: 40px; }
+        p.descripcion { font-size: 14px; color: #555; }
+        
+        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], textarea, select, input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b08d57;
+            border-radius: 5px;
+            background-color: #f9f6f0;
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea { resize: vertical; min-height: 100px; }
+        
+        /* Estilo para los checkboxes */
+        .opciones { margin-top: 10px; }
+        .opciones label { display: inline-block; margin-right: 15px; font-weight: normal; }
+        
+        button {
+            background-color: #1e2e1e;
+            color: #f4efe6;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 40px;
+            width: 100%;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+        button:hover { background-color: #b08d57; }
+        
+        .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <form action="https://formspree.io/f/xaeyjqkp" method="POST">
+        
+        <div class="cabecera">
+            <h1>PSILORIGEN</h1>
+            <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
+        </div>
+
+        <div class="intro">
+            <h2>FORMULARIO DE INTENCIÓN E INTROSPECCIÓN</h2>
+            <p><b>Meditación Acompañada</b></p>
+            <p>Un espacio para escucharte antes de comenzar.<br>
+            No necesitas tener una respuesta perfecta.<br>
+            Responde desde la honestidad.</p>
+        </div>
+
+        <!-- NUEVOS CAMPOS DE AGENDA -->
+        <h2>Agenda tu experiencia</h2>
+        <label>Fecha deseada para la meditación *</label>
+        <input type="date" name="fecha_meditacion" required>
+
+        <label>Horario preferido *</label>
+        <select name="horario_meditacion" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Manana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+        </select>
+
+        <!-- SECCIÓN 1 -->
+        <h2>1. ¿Por qué estás aquí?</h2>
+        <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
+        <textarea name="motivacion" required></textarea>
+
+        <p class="descripcion">¿Qué estás buscando en este momento de tu vida?</p>
+        <textarea name="buscando"></textarea>
+
+        <p class="descripcion">¿Qué te gustaría explorar dentro de ti?</p>
+        <textarea name="explorar"></textarea>
+
+        <!-- SECCIÓN 2 -->
+        <h2>2. Tu mundo interior</h2>
+        <p class="descripcion">¿Cómo te sientes contigo mismo/a actualmente?</p>
+        <textarea name="como_te_sientes"></textarea>
+
+        <p class="descripcion">¿Qué aspecto de tu vida ocupa más espacio en tu mente últimamente?</p>
+        <textarea name="aspecto_mente"></textarea>
+
+        <p class="descripcion">¿Hay algo que llevas tiempo evitando mirar?</p>
+        <textarea name="evitando_mirar"></textarea>
+
+        <p class="descripcion">¿Existe alguna emoción que sientas que necesitas comprender mejor?</p>
+        <textarea name="emocion_comprender"></textarea>
+
+        <!-- SECCIÓN 3 -->
+        <h2>3. Lo que deseas explorar</h2>
+        <p class="descripcion">Si pudieras obtener claridad sobre una sola cosa durante esta experiencia, ¿qué sería?</p>
+        <textarea name="claridad"></textarea>
+
+        <p class="descripcion">¿Hay algo que quieras soltar, aceptar, perdonar o transformar?</p>
+        <textarea name="soltar"></textarea>
+
+        <p class="descripcion">¿Qué relación tienes actualmente contigo mismo/a?</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="relacion" value="amor"> Me trato con amor</label><br>
+            <label><input type="checkbox" name="relacion" value="aceptarme"> Estoy aprendiendo a aceptarme</label><br>
+            <label><input type="checkbox" name="relacion" value="exigente"> Soy muy exigente conmigo</label><br>
+            <label><input type="checkbox" name="relacion" value="comprenderme"> Me cuesta comprenderme</label><br>
+            <label><input type="checkbox" name="relacion" value="cambio"> Estoy atravesando un cambio</label><br>
+            <label><input type="text" name="relacion_otra" placeholder="Otra:"></label>
+        </div>
+
+        <!-- SECCIÓN 4 -->
+        <h2>4. Tu intención</h2>
+        <p class="descripcion">Completa las siguientes frases:</p>
+        <label>Durante esta meditación quiero permitirme…</label>
+        <input type="text" name="permitirme">
+        
+        <label>Estoy dispuesto/a a mirar…</label>
+        <input type="text" name="mirar">
+        
+        <label>Me gustaría aprender sobre mí…</label>
+        <input type="text" name="aprender_mi">
+        
+        <label>Me gustaría regresar de esta experiencia con…</label>
+        <input type="text" name="regresar_con">
+
+        <!-- SECCIÓN 5 -->
+        <h2>5. Tus expectativas</h2>
+        <p class="descripcion">¿Qué esperas encontrar durante esta experiencia?</p>
+        <textarea name="esperas_encontrar"></textarea>
+
+        <p class="descripcion">¿Qué pasaría si no recibieras una respuesta inmediata a aquello que estás buscando?</p>
+        <textarea name="sin_respuesta"></textarea>
+
+        <p class="descripcion">¿Estás dispuesto/a a permitir que la experiencia se desarrolle sin intentar controlar completamente lo que ocurre?</p>
+        <select name="control" required>
+            <option value="">Selecciona una opción</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+            <option value="no_seguro">No estoy seguro/a</option>
+        </select>
+
+        <!-- SECCIÓN 6 -->
+        <h2>6. Una mirada hacia adentro</h2>
+        <p class="descripcion">Si pudieras sentarte frente a ti mismo/a durante unas horas, sin teléfono, sin trabajo, sin obligaciones y sin posibilidad de distraerte… ¿Qué crees que necesitarías decirte?</p>
+        <textarea name="decirte"></textarea>
+
+        <!-- SECCIÓN 7 -->
+        <h2>7. Después de la meditación</h2>
+        <p class="descripcion">¿Qué aspecto de tu vida te gustaría cuidar, cambiar o comprender mejor después de esta experiencia?</p>
+        <textarea name="cuidar_despues"></textarea>
+
+        <p class="descripcion">¿Qué compromiso contigo mismo/a te gustaría llevarte?</p>
+        <textarea name="compromiso"></textarea>
+
+        <p class="descripcion">¿Qué te gustaría recordar cuando regreses a tu vida cotidiana?</p>
+        <textarea name="recordar"></textarea>
+
+        <!-- MI INTENCIÓN -->
+        <h2>Mi intención</h2>
+        <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
+        <textarea name="intencion_final"></textarea>
+
+        <!-- CAMPOS DE IDENTIFICACIÓN -->
+        <h2>Datos de contacto</h2>
+        <label>Nombre: *</label>
+        <input type="text" name="nombre" required>
+
+        <label>Correo electrónico: *</label>
+        <input type="email" name="email" required>
+
+        <div class="cierre">
+            <p>No necesitas encontrar todas las respuestas hoy.<br>
+            A veces, lo más valioso de una meditación no es lo que comprendemos durante ella, sino aquello que comenzamos a observar de nosotros mismos después.</p>
+        </div>
+
+        <button type="submit">Enviar mi intención</button>
+    </form>
+</div>
+
+</body>
+</html>
