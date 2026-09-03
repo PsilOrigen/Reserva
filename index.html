@@ -110,7 +110,7 @@
         .lead-form { background-color: var(--input-bg); border: 2px solid var(--dorado); border-radius: 15px; padding: 25px; margin-top: 50px; text-align: center; }
         .lead-form h3 { color: var(--verde-profundo); margin-top: 0; font-size: 22px; }
         .lead-form p { font-size: 15px; margin-bottom: 20px; }
-        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid var(--dorado); border-radius: 5px; background-color: var(--input-focus); font-family: 'Georgia', serif; font-size: 16px; box-sizing: border-box; margin-bottom: 10px; color: var(--texto-principal); }
+        input[type="text"], input[type="email"], input[type="tel"] { width: 100%; padding: 12px; border: 1px solid var(--dorado); border-radius: 5px; background-color: var(--input-focus); font-family: 'Georgia', serif; font-size: 16px; box-sizing: border-box; margin-bottom: 10px; color: var(--texto-principal); }
         .lead-btn { background-color: var(--verde-profundo); color: var(--fondo-principal); border: none; padding: 15px 30px; border-radius: 30px; font-size: 16px; letter-spacing: 2px; width: 100%; cursor: pointer; transition: all 0.3s; }
         .lead-btn:hover { background-color: var(--dorado); }
         .lead-success { display: none; background-color: #E8F5E9; color: #1B5E20; border: 1px solid #2E7D32; border-radius: 10px; padding: 20px; margin-top: 20px; font-weight: bold; }
@@ -184,12 +184,13 @@
         <form id="leadForm" action="https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec" method="POST">
             <input type="hidden" name="tipo" value="meditacion">
             <input type="text" name="nombre" placeholder="Tu nombre" required>
-            <input type="email" name="email" placeholder="Tu correo electrónico" required>
-            <button type="submit" class="lead-btn">Descargar Meditación</button>
+            <input type="tel" name="whatsapp" placeholder="Tu número de WhatsApp (ej: +1 809 457 9494)" required>
+            <input type="email" name="email" placeholder="Tu correo electrónico (opcional)">
+            <button type="submit" class="lead-btn">Recibir por WhatsApp</button>
         </form>
 
         <div id="leadSuccess" class="lead-success">
-            ✅ ¡Gracias! Revisa tu correo, te hemos enviado tu meditación de bienvenida.
+            ✅ ¡Perfecto! Te escribiremos por WhatsApp para enviarte tu meditación de bienvenida.
         </div>
     </div>
 
