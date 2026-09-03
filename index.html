@@ -102,11 +102,40 @@
         p { line-height: 1.8; font-size: 17px; color: var(--texto-principal); }
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
         .bienvenida { background-color: var(--input-bg); border-left: 4px solid var(--dorado); padding: 25px; margin: 30px 0; font-style: italic; text-align: center; }
-        .tarjetas-cta { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 40px; }
-        .tarjeta-cta { flex: 1 1 220px; max-width: 250px; background-color: var(--verde-profundo); color: var(--fondo-principal); border-radius: 15px; padding: 20px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 12px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-        .tarjeta-cta:hover { background-color: var(--dorado); transform: translateY(-3px); }
-        .tarjeta-cta span { font-size: 28px; }
-        .tarjeta-cta p { margin: 0; color: inherit; font-size: 15px; line-height: 1.4; }
+        
+        /* BOTONES TIPO PÍLDORA (MÁS ELEGANTES Y COMPACTOS) */
+        .tarjetas-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .tarjeta-cta {
+            flex: 1 1 calc(50% - 12px);
+            max-width: 280px;
+            background-color: var(--verde-profundo);
+            color: var(--fondo-principal);
+            border-radius: 50px;
+            padding: 12px 15px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+        .tarjeta-cta:hover {
+            background-color: var(--dorado);
+            transform: translateY(-2px);
+        }
+        .tarjeta-cta span { font-size: 20px; }
+
         .lead-form { background-color: var(--input-bg); border: 2px solid var(--dorado); border-radius: 15px; padding: 25px; margin-top: 50px; text-align: center; }
         .lead-form h3 { color: var(--verde-profundo); margin-top: 0; font-size: 22px; }
         .lead-form p { font-size: 15px; margin-bottom: 20px; }
@@ -124,8 +153,10 @@
             .nav { display: none; flex-direction: column; margin-top: 10px; gap: 5px; }
             .nav.open { display: flex; }
             .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
+            
+            /* En celular, los botones se apilan y se ven compactos */
             .tarjetas-cta { flex-direction: column; }
-            .tarjeta-cta { max-width: 100%; }
+            .tarjeta-cta { max-width: 100%; flex: 1 1 100%; }
             .modo-oscuro-btn { top: 10px; right: 10px; }
         }
     </style>
@@ -169,11 +200,11 @@
     <div class="tarjetas-cta">
         <a href="quienes-somos.html" class="tarjeta-cta">
             <span>🌿</span>
-            <p>Conócenos y descubre nuestra historia</p>
+            <p style="margin: 0;">Conócenos</p>
         </a>
         <a href="experiencia.html" class="tarjeta-cta">
             <span>🧠</span>
-            <p>Explora la ciencia y el proceso</p>
+            <p style="margin: 0;">Explora la Ciencia</p>
         </a>
     </div>
 
