@@ -176,6 +176,58 @@
         .horario-btn:hover { background-color: #E8F5E9; }
         .horario-btn.seleccionado { background-color: var(--dorado); color: var(--fondo-principal); }
         
+        /* MODAL DE ÉXITO */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-box {
+            background-color: var(--fondo-contenedor);
+            border: 3px solid var(--dorado);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .modal-box img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .modal-box h3 {
+            color: var(--verde-profundo);
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+        .modal-box p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 25px 0;
+        }
+        .modal-close-btn {
+            background-color: var(--verde-profundo);
+            color: var(--fondo-principal);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .modal-close-btn:hover { background-color: var(--dorado); }
+        
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
@@ -189,6 +241,7 @@
             .dias-grid { gap: 3px; }
             .dia { padding: 8px; font-size: 12px; }
             .modo-oscuro-btn { top: 10px; right: 10px; }
+            .modal-box { padding: 30px; }
         }
     </style>
 </head>
@@ -216,7 +269,7 @@
                 <a href="index.html">🏠 Portada</a>
                 <a href="quienes-somos.html">🌿 Quiénes Somos</a>
                 <a href="experiencia.html">🧠 Experiencia</a>
-                <a href="inversion.html">💎 Inversión</a>
+                <a href="inversion.html">🤲 Aporte</a>
                 <a href="reserva.html" class="activo">📝 Reserva</a>
                 <a href="contacto.html">📞 Contacto</a>
             </div>
@@ -332,8 +385,8 @@
         <input type="text" name="nombre" required>
         <label>Número de WhatsApp: *</label>
         <input type="tel" name="whatsapp" placeholder="Ej: +1 809 457 9494" required>
-        <label>Correo electrónico: *</label>
-        <input type="email" name="email" required>
+        <label>Correo electrónico: </label>
+        <input type="email" name="email">
 
         <div class="cierre">
             <p>No necesitas encontrar todas las respuestas hoy.<br>
@@ -342,6 +395,16 @@
 
         <button type="submit">Enviar mi intención</button>
     </form>
+</div>
+
+<!-- MODAL DE ÉXITO -->
+<div class="modal-overlay" id="successModal">
+    <div class="modal-box">
+        <img src="logo.png" alt="Logo PsilOrigen">
+        <h3>✨ Gracias por confiar en el proceso</h3>
+        <p>Tu intención ha sido recibida. Te contactaremos muy pronto para acompañarte en este hermoso viaje de reconexión.</p>
+        <button class="modal-close-btn" onclick="closeModal()">Cerrar</button>
+    </div>
 </div>
 
 <script>
@@ -364,8 +427,22 @@
     let mesActual = fechaActual.getMonth();
     let anioActual = fechaActual.getFullYear();
     let diaSeleccionado = null;
+    let diasDisponibles = [];
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    const diasDisponibles = [1, 3, 4, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29];
+
+    function obtenerDisponibilidad() {
+        fetch('https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec?action=obtenerDisponibilidad')
+            .then(response => response.json())
+            .then(data => {
+                diasDisponibles = data;
+                renderCalendario();
+            })
+            .catch(error => {
+                // Lista de respaldo: Incluye el día 4
+                diasDisponibles = [1, 3, 4, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29];
+                renderCalendario();
+            });
+    }
 
     function renderCalendario() {
         const grid = document.getElementById('calendarioGrid');
@@ -374,46 +451,55 @@
         grid.innerHTML = '';
         let primerDia = new Date(anioActual, mesActual, 1).getDay();
         let diasEnMes = new Date(anioActual, mesActual + 1, 0).getDate();
+
         for (let i = 0; i < primerDia; i++) {
             let empty = document.createElement('div');
             empty.className = 'dia';
             empty.style.visibility = 'hidden';
             grid.appendChild(empty);
         }
+
         for (let dia = 1; dia <= diasEnMes; dia++) {
             let div = document.createElement('div');
             div.className = 'dia';
             div.textContent = dia;
-            if (diasDisponibles.includes(dia)) {
+            
+            let fechaCompleta = anioActual + '-' + (mesActual + 1) + '-' + (dia < 10 ? '0' : '') + dia;
+            if (diasDisponibles.includes(fechaCompleta)) {
                 div.classList.add('disponible');
                 div.onclick = function() { seleccionarDia(this, dia); };
             } else {
                 div.classList.add('ocupado');
             }
+
             grid.appendChild(div);
         }
     }
+
     function cambiarMes(direccion) {
         mesActual += direccion;
         if (mesActual < 0) { mesActual = 11; anioActual--; }
         if (mesActual > 11) { mesActual = 0; anioActual++; }
         renderCalendario();
     }
+
     function seleccionarDia(elemento, dia) {
         document.querySelectorAll('.dia.seleccionado').forEach(el => el.classList.remove('seleccionado'));
         elemento.classList.add('seleccionado');
         diaSeleccionado = dia;
-        document.getElementById('fechaSeleccionada').value = anioActual + '-' + (mesActual + 1) + '-' + dia;
+        document.getElementById('fechaSeleccionada').value = anioActual + '-' + (mesActual + 1) + '-' + (dia < 10 ? '0' : '') + dia;
         document.getElementById('horariosDisponibles').style.display = 'block';
     }
+
     function seleccionarHorario(elemento, horario) {
         document.querySelectorAll('.horario-btn.seleccionado').forEach(el => el.classList.remove('seleccionado'));
         elemento.classList.add('seleccionado');
         document.getElementById('horarioSeleccionado').value = horario;
     }
-    renderCalendario();
 
-    // CONEXIÓN A GOOGLE APPS SCRIPT
+    obtenerDisponibilidad();
+
+    // CONEXIÓN A GOOGLE APPS SCRIPT + MODAL DE ÉXITO
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec';
     const form = document.getElementById('reservaForm');
 
@@ -421,11 +507,17 @@
         e.preventDefault();
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
-                alert('🎉 ¡Reserva enviada con éxito! Revisa tu correo o WhatsApp para confirmar.');
+                // Mostrar el modal de éxito
+                document.getElementById('successModal').classList.add('show');
                 form.reset();
             })
             .catch(error => alert('¡Error! No se pudo enviar la reserva.'));
     });
+
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById('successModal').classList.remove('show');
+    }
 </script>
 </body>
 </html>
