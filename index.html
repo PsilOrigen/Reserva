@@ -103,7 +103,7 @@
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
         .bienvenida { background-color: var(--input-bg); border-left: 4px solid var(--dorado); padding: 25px; margin: 30px 0; font-style: italic; text-align: center; }
         
-        /* BOTONES TIPO PÍLDORA (MÁS ELEGANTES Y COMPACTOS) */
+        /* BOTONES TIPO PÍLDORA (CORREGIDOS PARA LEGIBILIDAD) */
         .tarjetas-cta {
             display: flex;
             flex-wrap: wrap;
@@ -129,12 +129,20 @@
             font-size: 13px;
             letter-spacing: 1px;
             line-height: 1.4;
+            font-weight: bold;
         }
         .tarjeta-cta:hover {
             background-color: var(--dorado);
             transform: translateY(-2px);
         }
         .tarjeta-cta span { font-size: 20px; }
+        
+        /* FORZAR EL COLOR DEL TEXTO PARA QUE SIEMPRE SE LEA */
+        .tarjeta-cta p {
+            margin: 0;
+            color: var(--fondo-principal) !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
 
         .lead-form { background-color: var(--input-bg); border: 2px solid var(--dorado); border-radius: 15px; padding: 25px; margin-top: 50px; text-align: center; }
         .lead-form h3 { color: var(--verde-profundo); margin-top: 0; font-size: 22px; }
@@ -200,11 +208,11 @@
     <div class="tarjetas-cta">
         <a href="quienes-somos.html" class="tarjeta-cta">
             <span>🌿</span>
-            <p style="margin: 0;">Conócenos</p>
+            <p>Conócenos</p>
         </a>
         <a href="experiencia.html" class="tarjeta-cta">
             <span>🧠</span>
-            <p style="margin: 0;">Explora la Ciencia</p>
+            <p>Explora la Ciencia</p>
         </a>
     </div>
 
