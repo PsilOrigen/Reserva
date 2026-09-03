@@ -197,7 +197,10 @@
     <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">💬 WhatsApp</a>
 
 <div class="contenedor">
-    <form id="reservaForm" action="https://formspree.io/f/xaeyjqkp" method="POST">
+    <form id="reservaForm" action="https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec" method="POST">
+        
+        <input type="hidden" name="tipo" value="reserva">
+        
         <div class="cabecera">
             <img src="logo.png" alt="Logo PsilOrigen" class="logo-imagen">
             <div class="subtitulo">EXPLORA. CONECTA. INTEGRA.</div>
@@ -348,6 +351,7 @@
         button.classList.toggle('open');
         menu.classList.toggle('open');
     }
+
     function toggleModoOscuro() {
         var body = document.body;
         body.classList.toggle('modo-oscuro');
@@ -355,6 +359,7 @@
         boton.textContent = body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
     }
     
+    // LÓGICA DEL CALENDARIO
     let fechaActual = new Date();
     let mesActual = fechaActual.getMonth();
     let anioActual = fechaActual.getFullYear();
@@ -407,6 +412,20 @@
         document.getElementById('horarioSeleccionado').value = horario;
     }
     renderCalendario();
+
+    // CONEXIÓN A GOOGLE APPS SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec';
+    const form = document.getElementById('reservaForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                alert('🎉 ¡Reserva enviada con éxito! Revisa tu correo o WhatsApp para confirmar.');
+                form.reset();
+            })
+            .catch(error => alert('¡Error! No se pudo enviar la reserva.'));
+    });
 </script>
 </body>
 </html>

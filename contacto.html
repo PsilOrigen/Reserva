@@ -204,7 +204,8 @@
     <h2>Envíanos un mensaje</h2>
     <p>Si prefieres escribirnos, completa este breve formulario. Te responderemos lo antes posible.</p>
 
-    <form action="https://formspree.io/f/xaeyjqkp" method="POST">
+    <form id="contactoForm" action="https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec" method="POST">
+        <input type="hidden" name="tipo" value="contacto">
         <label>Nombre: *</label>
         <input type="text" name="nombre" required>
         <label>Correo electrónico: *</label>
@@ -228,6 +229,20 @@
         var boton = document.querySelector('.modo-oscuro-btn');
         boton.textContent = body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
     }
+
+    // CONEXIÓN A GOOGLE APPS SCRIPT
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwFldwkBpUDF8OIRhYnaHLWpXP6IfJ_Fn_hfMnlmunqlqRmNWytjQQQcGgWaUzjxcmG/exec';
+    const form = document.getElementById('contactoForm');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                alert('✅ ¡Mensaje enviado! Te responderemos pronto.');
+                form.reset();
+            })
+            .catch(error => alert('¡Error! No se pudo enviar el mensaje.'));
+    });
 </script>
 </body>
 </html>
