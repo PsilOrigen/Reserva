@@ -5,28 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | PsilOrigen</title>
     <style>
+        /* VARIABLES DE COLOR (MODO CLARO POR DEFECTO) */
+        :root {
+            --fondo-principal: #F5EDDC;
+            --fondo-contenedor: #F5EDDC;
+            --texto-principal: #3A2E24;
+            --verde-profundo: #142A1C;
+            --verde-oliva: #2B3E2D;
+            --dorado: #B08D57;
+            --blanco: #FFFFFF;
+            --input-bg: #F5EDDC;
+            --input-focus: #FFFFFF;
+        }
+        
+        /* MODO OSCURO */
+        body.modo-oscuro {
+            --fondo-principal: #0F1A12;
+            --fondo-contenedor: #16241A;
+            --texto-principal: #E8DCC5;
+            --verde-profundo: #B08D57; /* En oscuro, el dorado se vuelve el contraste principal */
+            --verde-oliva: #2B3E2D;
+            --dorado: #D4AF37;
+            --blanco: #1E2E22;
+            --input-bg: #1E2E22;
+            --input-focus: #2B3E2D;
+        }
+
         body {
-            background-color: #F5EDDC;
-            background-image: linear-gradient(rgba(245, 237, 220, 0.94), rgba(245, 237, 220, 0.94)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
+            background-color: var(--fondo-principal);
+            background-image: linear-gradient(rgba(15, 26, 18, 0.94), rgba(15, 26, 18, 0.94)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
-            color: #3A2E24;
+            color: var(--texto-principal);
             margin: 0;
             padding: 20px;
         }
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #F5EDDC;
-            border: 2px solid #2B3E2D;
+            background-color: var(--fondo-contenedor);
+            border: 2px solid var(--verde-oliva);
             border-radius: 15px;
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
+
+        /* CABECERA Y BOTÓN MODO OSCURO */
         .cabecera {
             text-align: center;
-            border-bottom: 2px solid #B08D57;
+            border-bottom: 2px solid var(--dorado);
             padding-bottom: 25px;
             margin-bottom: 30px;
         }
@@ -41,144 +69,68 @@
         .subtitulo {
             font-size: 12px;
             letter-spacing: 5px;
-            color: #142A1C;
+            color: var(--verde-profundo);
             margin-top: 5px;
             text-transform: uppercase;
         }
-        .nav-container {
-            position: relative;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .menu-toggle {
-            display: none;
-            background-color: #142A1C;
-            color: #F5EDDC;
-            border: none;
-            border-radius: 12px;
-            padding: 14px 20px;
+
+        /* BOTÓN MODO OSCURO */
+        .modo-oscuro-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--verde-profundo);
+            color: var(--fondo-principal);
+            border: 1px solid var(--dorado);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
             cursor: pointer;
-            position: relative;
-            z-index: 10;
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
         }
-        .menu-toggle span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background-color: #F5EDDC;
-            margin: 4px auto;
-            transition: all 0.3s ease;
-        }
+        .modo-oscuro-btn:hover { transform: scale(1.1); }
+
+        /* MENÚ */
+        .nav-container { position: relative; margin-bottom: 30px; text-align: center; }
+        .menu-toggle { display: none; background-color: var(--verde-profundo); color: var(--fondo-principal); border: none; border-radius: 12px; padding: 14px 20px; cursor: pointer; position: relative; z-index: 10; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .menu-toggle span { display: block; width: 22px; height: 2px; background-color: var(--fondo-principal); margin: 4px auto; transition: all 0.3s ease; }
         .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-        }
-        .nav a {
-            background-color: #142A1C;
-            color: #F5EDDC;
-            padding: 12px 25px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            transition: all 0.3s;
-        }
-        .nav a:hover { background-color: #B08D57; }
-        .nav a.activo { background-color: #B08D57; box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4); }
-        h1 { color: #142A1C; font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
-        h2 { color: #142A1C; border-bottom: 1px solid #B08D57; padding-bottom: 10px; margin-top: 40px; }
-        p { line-height: 1.8; font-size: 17px; color: #3A2E24; }
+        .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+        .nav a { background-color: var(--verde-profundo); color: var(--fondo-principal); padding: 12px 25px; text-decoration: none; border-radius: 30px; font-size: 14px; letter-spacing: 2px; transition: all 0.3s; }
+        .nav a:hover { background-color: var(--dorado); }
+        .nav a.activo { background-color: var(--dorado); box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4); }
+
+        /* TÍTULOS Y TEXTOS */
+        h1 { color: var(--verde-profundo); font-size: 34px; letter-spacing: 2px; text-align: center; margin: 20px 0 10px; }
+        h2 { color: var(--verde-profundo); border-bottom: 1px solid var(--dorado); padding-bottom: 10px; margin-top: 40px; }
+        p { line-height: 1.8; font-size: 17px; color: var(--texto-principal); }
         .intro { text-align: center; font-style: italic; margin-bottom: 30px; font-size: 18px; }
-        .bienvenida {
-            background-color: #F5EDDC;
-            border-left: 4px solid #B08D57;
-            padding: 25px;
-            margin: 30px 0;
-            font-style: italic;
-            text-align: center;
-        }
-        .tarjetas-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        .tarjeta-cta {
-            flex: 1 1 220px;
-            max-width: 250px;
-            background-color: #142A1C;
-            color: #F5EDDC;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .tarjeta-cta:hover {
-            background-color: #B08D57;
-            transform: translateY(-3px);
-        }
+        .bienvenida { background-color: var(--input-bg); border-left: 4px solid var(--dorado); padding: 25px; margin: 30px 0; font-style: italic; text-align: center; }
+
+        /* TARJETAS CTA */
+        .tarjetas-cta { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 40px; }
+        .tarjeta-cta { flex: 1 1 220px; max-width: 250px; background-color: var(--verde-profundo); color: var(--fondo-principal); border-radius: 15px; padding: 20px; text-align: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 6px 12px rgba(0,0,0,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+        .tarjeta-cta:hover { background-color: var(--dorado); transform: translateY(-3px); }
         .tarjeta-cta span { font-size: 28px; }
         .tarjeta-cta p { margin: 0; color: inherit; font-size: 15px; line-height: 1.4; }
-        /* FORMULARIO LEAD MAGNET */
-        .lead-form {
-            background-color: #F5EDDC;
-            border: 2px solid #B08D57;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 50px;
-            text-align: center;
-        }
-        .lead-form h3 { color: #142A1C; margin-top: 0; font-size: 22px; }
+
+        /* LEAD MAGNET */
+        .lead-form { background-color: var(--input-bg); border: 2px solid var(--dorado); border-radius: 15px; padding: 25px; margin-top: 50px; text-align: center; }
+        .lead-form h3 { color: var(--verde-profundo); margin-top: 0; font-size: 22px; }
         .lead-form p { font-size: 15px; margin-bottom: 20px; }
-        input[type="text"], input[type="email"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #B08D57;
-            border-radius: 5px;
-            background-color: #FFFFFF;
-            font-family: 'Georgia', serif;
-            font-size: 16px;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-        }
-        .lead-btn {
-            background-color: #142A1C;
-            color: #F5EDDC;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 16px;
-            letter-spacing: 2px;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .lead-btn:hover { background-color: #B08D57; }
-        .lead-success {
-            display: none;
-            background-color: #E8F5E9;
-            color: #1B5E20;
-            border: 1px solid #2E7D32;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            font-weight: bold;
-        }
+        input[type="text"], input[type="email"] { width: 100%; padding: 12px; border: 1px solid var(--dorado); border-radius: 5px; background-color: var(--input-focus); font-family: 'Georgia', serif; font-size: 16px; box-sizing: border-box; margin-bottom: 10px; color: var(--texto-principal); }
+        .lead-btn { background-color: var(--verde-profundo); color: var(--fondo-principal); border: none; padding: 15px 30px; border-radius: 30px; font-size: 16px; letter-spacing: 2px; width: 100%; cursor: pointer; transition: all 0.3s; }
+        .lead-btn:hover { background-color: var(--dorado); }
+        .lead-success { display: none; background-color: #E8F5E9; color: #1B5E20; border: 1px solid #2E7D32; border-radius: 10px; padding: 20px; margin-top: 20px; font-weight: bold; }
+
         @media (max-width: 600px) {
             body { padding: 10px; }
             .contenedor { padding: 20px; border: none; border-radius: 10px; }
@@ -191,10 +143,14 @@
             .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
             .tarjetas-cta { flex-direction: column; }
             .tarjeta-cta { max-width: 100%; }
+            .modo-oscuro-btn { top: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN MODO OSCURO -->
+    <button class="modo-oscuro-btn" onclick="toggleModoOscuro()">🌙</button>
 
 <div class="contenedor">
     <div class="cabecera">
@@ -240,23 +196,17 @@
         </a>
     </div>
 
-    <!-- LEAD MAGNET: MEDITACIÓN GRATUITA -->
     <div class="lead-form">
         <h3>✨ Descarga tu Meditación de Bienvenida</h3>
         <p>Recibe un audio gratuito de 10 minutos para conectarte con tu respiración, antes de dar el siguiente paso.</p>
-        
         <form id="leadForm" action="https://formspree.io/f/xaeyjqkp" method="POST">
             <input type="text" name="nombre" placeholder="Tu nombre" required>
             <input type="email" name="email" placeholder="Tu correo electrónico" required>
             <input type="hidden" name="tipo" value="Meditacion Gratuita">
             <button type="submit" class="lead-btn">Descargar Meditación</button>
         </form>
-
-        <div id="leadSuccess" class="lead-success">
-            ✅ ¡Gracias! Revisa tu correo, te hemos enviado tu meditación de bienvenida.
-        </div>
+        <div id="leadSuccess" class="lead-success">✅ ¡Gracias! Revisa tu correo, te hemos enviado tu meditación de bienvenida.</div>
     </div>
-
 </div>
 
 <script>
@@ -267,12 +217,16 @@
         menu.classList.toggle('open');
     }
 
-    // Manejo del formulario Lead Magnet
+    function toggleModoOscuro() {
+        var body = document.body;
+        body.classList.toggle('modo-oscuro');
+        var boton = document.querySelector('.modo-oscuro-btn');
+        boton.textContent = body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
+    }
+
     document.getElementById('leadForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que recargue la página
+        e.preventDefault();
         var form = this;
-        
-        // Enviar a Formspree
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),

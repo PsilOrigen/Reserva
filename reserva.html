@@ -5,28 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reserva | PsilOrigen</title>
     <style>
+        :root {
+            --fondo-principal: #F5EDDC;
+            --fondo-contenedor: #F5EDDC;
+            --texto-principal: #3A2E24;
+            --verde-profundo: #142A1C;
+            --verde-oliva: #2B3E2D;
+            --dorado: #B08D57;
+            --blanco: #FFFFFF;
+            --input-bg: #F5EDDC;
+            --input-focus: #FFFFFF;
+        }
+        body.modo-oscuro {
+            --fondo-principal: #0F1A12;
+            --fondo-contenedor: #16241A;
+            --texto-principal: #E8DCC5;
+            --verde-profundo: #B08D57;
+            --verde-oliva: #2B3E2D;
+            --dorado: #D4AF37;
+            --blanco: #1E2E22;
+            --input-bg: #1E2E22;
+            --input-focus: #2B3E2D;
+        }
         body {
-            background-color: #F5EDDC;
-            background-image: linear-gradient(rgba(245, 237, 220, 0.94), rgba(245, 237, 220, 0.94)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
+            background-color: var(--fondo-principal);
+            background-image: linear-gradient(rgba(15, 26, 18, 0.94), rgba(15, 26, 18, 0.94)), url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2071&auto=format&fit=crop');
             background-size: cover;
             background-attachment: fixed;
             font-family: 'Georgia', serif;
-            color: #3A2E24;
+            color: var(--texto-principal);
             margin: 0;
             padding: 20px;
         }
         .contenedor {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #F5EDDC;
-            border: 2px solid #2B3E2D;
+            background-color: var(--fondo-contenedor);
+            border: 2px solid var(--verde-oliva);
             border-radius: 15px;
             padding: 40px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
         .cabecera {
             text-align: center;
-            border-bottom: 2px solid #B08D57;
+            border-bottom: 2px solid var(--dorado);
             padding-bottom: 25px;
             margin-bottom: 30px;
         }
@@ -41,38 +63,59 @@
         .subtitulo {
             font-size: 12px;
             letter-spacing: 5px;
-            color: #142A1C;
+            color: var(--verde-profundo);
             margin-top: 5px;
             text-transform: uppercase;
         }
+        .modo-oscuro-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--verde-profundo);
+            color: var(--fondo-principal);
+            border: 1px solid var(--dorado);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .modo-oscuro-btn:hover { transform: scale(1.1); }
         .nav-container { position: relative; margin-bottom: 30px; text-align: center; }
-        .menu-toggle { display: none; background-color: #142A1C; color: #F5EDDC; border: none; border-radius: 12px; padding: 14px 20px; cursor: pointer; position: relative; z-index: 10; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
-        .menu-toggle span { display: block; width: 22px; height: 2px; background-color: #F5EDDC; margin: 4px auto; transition: all 0.3s ease; }
+        .menu-toggle { display: none; background-color: var(--verde-profundo); color: var(--fondo-principal); border: none; border-radius: 12px; padding: 14px 20px; cursor: pointer; position: relative; z-index: 10; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .menu-toggle span { display: block; width: 22px; height: 2px; background-color: var(--fondo-principal); margin: 4px auto; transition: all 0.3s ease; }
         .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         .menu-toggle.open span:nth-child(2) { opacity: 0; }
         .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-        .nav a { background-color: #142A1C; color: #F5EDDC; padding: 12px 25px; text-decoration: none; border-radius: 30px; font-size: 14px; letter-spacing: 2px; transition: all 0.3s; }
-        .nav a:hover { background-color: #B08D57; }
-        .nav a.activo { background-color: #B08D57; box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4); }
-        h1 { color: #B08D57; letter-spacing: 2px; font-size: 28px; margin: 0; }
+        .nav a { background-color: var(--verde-profundo); color: var(--fondo-principal); padding: 12px 25px; text-decoration: none; border-radius: 30px; font-size: 14px; letter-spacing: 2px; transition: all 0.3s; }
+        .nav a:hover { background-color: var(--dorado); }
+        .nav a.activo { background-color: var(--dorado); box-shadow: 0 4px 8px rgba(176, 141, 87, 0.4); }
+        h1 { color: var(--dorado); letter-spacing: 2px; font-size: 28px; margin: 0; }
         .intro { text-align: center; font-style: italic; margin-bottom: 40px; }
-        h2 { color: #142A1C; border-bottom: 1px solid #B08D57; padding-bottom: 10px; margin-top: 40px; }
-        p.descripcion { font-size: 15px; color: #3A2E24; font-weight: bold; margin-bottom: 10px; }
-        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; color: #142A1C; }
+        h2 { color: var(--verde-profundo); border-bottom: 1px solid var(--dorado); padding-bottom: 10px; margin-top: 40px; }
+        p.descripcion { font-size: 15px; color: var(--texto-principal); font-weight: bold; margin-bottom: 10px; }
+        label { display: block; font-weight: bold; margin-top: 20px; margin-bottom: 5px; color: var(--verde-profundo); }
         input[type="text"], input[type="email"], input[type="tel"], textarea, select, input[type="date"] {
             width: 100%;
             padding: 12px;
-            border: 1px solid #B08D57;
+            border: 1px solid var(--dorado);
             border-radius: 5px;
-            background-color: #F5EDDC;
+            background-color: var(--input-bg);
             font-family: 'Georgia', serif;
             font-size: 16px;
             box-sizing: border-box;
+            color: var(--texto-principal);
         }
         input:focus, textarea:focus, select:focus {
-            border-color: #142A1C;
-            background-color: #FFFFFF;
+            border-color: var(--verde-profundo);
+            background-color: var(--input-focus);
             outline: none;
             box-shadow: 0 0 5px rgba(20, 42, 28, 0.3);
         }
@@ -80,8 +123,8 @@
         .opciones { margin-top: 10px; }
         .opciones label { display: block; margin-bottom: 10px; font-weight: normal; font-size: 15px; }
         button {
-            background-color: #142A1C;
-            color: #F5EDDC;
+            background-color: var(--verde-profundo);
+            color: var(--fondo-principal);
             border: none;
             padding: 15px 40px;
             font-size: 18px;
@@ -92,7 +135,7 @@
             letter-spacing: 2px;
             transition: all 0.3s;
         }
-        button:hover { background-color: #B08D57; }
+        button:hover { background-color: var(--dorado); }
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
@@ -112,79 +155,26 @@
             gap: 8px;
         }
         .whatsapp-float:hover { background-color: #128C7E; }
-        .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid #B08D57; padding-top: 20px; }
+        .cierre { text-align: center; font-style: italic; margin-top: 40px; border-top: 1px solid var(--dorado); padding-top: 20px; }
         
-        /* CALENDARIO VISUAL */
-        .calendario {
-            margin-top: 15px;
-        }
-        .calendario-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .calendario-header button {
-            background-color: #142A1C;
-            color: #F5EDDC;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 14px;
-            width: auto;
-            margin: 0;
-        }
-        .calendario-header button:hover { background-color: #B08D57; }
-        .calendario-header h3 { margin: 0; color: #142A1C; }
-        .dias-semana {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-size: 12px;
-            font-weight: bold;
-            color: #B08D57;
-            margin-bottom: 10px;
-        }
-        .dias-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-        .dia {
-            background-color: #FFFFFF;
-            border: 1px solid #B08D57;
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-        }
+        /* CALENDARIO */
+        .calendario { margin-top: 15px; }
+        .calendario-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .calendario-header button { background-color: var(--verde-profundo); color: var(--fondo-principal); border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer; font-size: 14px; width: auto; margin: 0; }
+        .calendario-header button:hover { background-color: var(--dorado); }
+        .calendario-header h3 { margin: 0; color: var(--verde-profundo); }
+        .dias-semana { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-size: 12px; font-weight: bold; color: var(--dorado); margin-bottom: 10px; }
+        .dias-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+        .dia { background-color: var(--input-focus); border: 1px solid var(--dorado); border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; font-size: 14px; color: var(--texto-principal); }
         .dia:hover { background-color: #E8F5E9; }
         .dia.disponible { border: 2px solid #4CAF50; color: #1B5E20; }
         .dia.ocupado { background-color: #E0E0E0; border-color: #9E9E9E; color: #757575; cursor: not-allowed; }
-        .dia.seleccionado { background-color: #B08D57; color: #F5EDDC; border-color: #B08D57; }
-        .horarios-disponibles {
-            margin-top: 20px;
-            display: none;
-        }
-        .horarios-disponibles h4 { color: #142A1C; margin-bottom: 10px; }
-        .horario-btn {
-            display: inline-block;
-            margin: 5px;
-            padding: 10px 20px;
-            border: 1px solid #B08D57;
-            border-radius: 20px;
-            background-color: #FFFFFF;
-            color: #142A1C;
-            cursor: pointer;
-            font-family: 'Georgia', serif;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
+        .dia.seleccionado { background-color: var(--dorado); color: var(--fondo-principal); border-color: var(--dorado); }
+        .horarios-disponibles { margin-top: 20px; display: none; }
+        .horarios-disponibles h4 { color: var(--verde-profundo); margin-bottom: 10px; }
+        .horario-btn { display: inline-block; margin: 5px; padding: 10px 20px; border: 1px solid var(--dorado); border-radius: 20px; background-color: var(--input-focus); color: var(--verde-profundo); cursor: pointer; font-family: 'Georgia', serif; font-size: 14px; transition: all 0.2s; }
         .horario-btn:hover { background-color: #E8F5E9; }
-        .horario-btn.seleccionado { background-color: #B08D57; color: #F5EDDC; }
+        .horario-btn.seleccionado { background-color: var(--dorado); color: var(--fondo-principal); }
         
         @media (max-width: 600px) {
             body { padding: 10px; }
@@ -198,10 +188,12 @@
             .nav a { width: 100%; padding: 15px 0; box-sizing: border-box; font-size: 16px; border-radius: 8px; }
             .dias-grid { gap: 3px; }
             .dia { padding: 8px; font-size: 12px; }
+            .modo-oscuro-btn { top: 10px; right: 10px; }
         }
     </style>
 </head>
 <body>
+    <button class="modo-oscuro-btn" onclick="toggleModoOscuro()">🌙</button>
     <a href="https://wa.me/18094579494?text=Hola%20PsilOrigen%2C%20tengo%20una%20duda%20sobre%20la%20meditaci%C3%B3n" target="_blank" class="whatsapp-float">💬 WhatsApp</a>
 
 <div class="contenedor">
@@ -235,7 +227,6 @@
             Responde desde la honestidad.</p>
         </div>
 
-        <!-- CALENDARIO VISUAL -->
         <h2>Agenda tu experiencia</h2>
         <label>Selecciona el día de tu sesión *</label>
         
@@ -251,14 +242,12 @@
             <div class="dias-grid" id="calendarioGrid"></div>
         </div>
 
-        <!-- HORARIOS (Se muestran al elegir día disponible) -->
         <div class="horarios-disponibles" id="horariosDisponibles">
             <h4>Selecciona tu horario:</h4>
             <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '7:00 AM')">7:00 AM</button>
-            <button type="button" class="horario-btn" onclick="selezionarHorario(this, '4:00 PM')">4:00 PM</button>
+            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '4:00 PM')">4:00 PM</button>
         </div>
 
-        <!-- Inputs ocultos para enviar al formulario -->
         <input type="hidden" name="fecha_meditacion" id="fechaSeleccionada" required>
         <input type="hidden" name="horario_meditacion" id="horarioSeleccionado" required>
 
@@ -359,77 +348,65 @@
         button.classList.toggle('open');
         menu.classList.toggle('open');
     }
-
-    // LÓGICA DEL CALENDARIO
+    function toggleModoOscuro() {
+        var body = document.body;
+        body.classList.toggle('modo-oscuro');
+        var boton = document.querySelector('.modo-oscuro-btn');
+        boton.textContent = body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
+    }
+    
     let fechaActual = new Date();
     let mesActual = fechaActual.getMonth();
     let anioActual = fechaActual.getFullYear();
     let diaSeleccionado = null;
-
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-    const diasDisponibles = [1, 3, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29]; // Ejemplo de días disponibles
+    const diasDisponibles = [1, 3, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29];
 
     function renderCalendario() {
         const grid = document.getElementById('calendarioGrid');
         const titulo = document.getElementById('mesActual');
         titulo.textContent = meses[mesActual] + ' ' + anioActual;
         grid.innerHTML = '';
-
         let primerDia = new Date(anioActual, mesActual, 1).getDay();
         let diasEnMes = new Date(anioActual, mesActual + 1, 0).getDate();
-
         for (let i = 0; i < primerDia; i++) {
             let empty = document.createElement('div');
             empty.className = 'dia';
             empty.style.visibility = 'hidden';
             grid.appendChild(empty);
         }
-
         for (let dia = 1; dia <= diasEnMes; dia++) {
             let div = document.createElement('div');
             div.className = 'dia';
             div.textContent = dia;
-
-            // Marcar días disponibles (ejemplo)
             if (diasDisponibles.includes(dia)) {
                 div.classList.add('disponible');
                 div.onclick = function() { seleccionarDia(this, dia); };
             } else {
                 div.classList.add('ocupado');
             }
-
             grid.appendChild(div);
         }
     }
-
     function cambiarMes(direccion) {
         mesActual += direccion;
         if (mesActual < 0) { mesActual = 11; anioActual--; }
         if (mesActual > 11) { mesActual = 0; anioActual++; }
         renderCalendario();
     }
-
     function seleccionarDia(elemento, dia) {
-        // Quitar selección anterior
         document.querySelectorAll('.dia.seleccionado').forEach(el => el.classList.remove('seleccionado'));
         elemento.classList.add('seleccionado');
-        
         diaSeleccionado = dia;
         document.getElementById('fechaSeleccionada').value = anioActual + '-' + (mesActual + 1) + '-' + dia;
-        
-        // Mostrar horarios
         document.getElementById('horariosDisponibles').style.display = 'block';
     }
-
     function seleccionarHorario(elemento, horario) {
         document.querySelectorAll('.horario-btn.seleccionado').forEach(el => el.classList.remove('seleccionado'));
         elemento.classList.add('seleccionado');
         document.getElementById('horarioSeleccionado').value = horario;
     }
-
-    // Inicializar
     renderCalendario();
 </script>
-
 </body>
 </html>
