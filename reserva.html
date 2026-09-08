@@ -283,17 +283,7 @@
             Responde desde la honestidad.</p>
         </div>
 
-        <!-- NUEVO: TIPO DE RESERVA -->
-        <h2>Selecciona tu tipo de reserva</h2>
-        <label>Tipo de Reserva *</label>
-        <select name="tipo_reserva" required>
-            <option value="">Selecciona una opción</option>
-            <option value="individual">Individual</option>
-            <option value="duo">Dúo</option>
-            <option value="ciclo">Ciclo de 4 Sesiones</option>
-            <option value="grupal">Grupal (3-5 personas)</option>
-        </select>
-
+        <!-- AGENDA (TIPO, FECHA Y HORA) -->
         <h2>Agenda tu experiencia</h2>
         <label>Selecciona el día de tu sesión *</label>
         
@@ -318,16 +308,7 @@
         <input type="hidden" name="fecha_meditacion" id="fechaSeleccionada" required>
         <input type="hidden" name="horario_meditacion" id="horarioSeleccionado" required>
 
-        <!-- NUEVO: MÉTODO DE APORTE -->
-        <h2>Método de Aporte</h2>
-        <label>¿Cómo realizarás tu aporte? *</label>
-        <select name="metodo_aporte" required>
-            <option value="">Selecciona una opción</option>
-            <option value="efectivo">Efectivo</option>
-            <option value="transferencia">Transferencia Bancaria</option>
-        </select>
-
-        <!-- PREGUNTAS DE OPCIÓN MÚLTIPLE CON 5 OPCIONES (MÁS DE UNA) -->
+        <!-- SECCIÓN 1 -->
         <h2>1. ¿Por qué estás aquí?</h2>
         <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
         <div class="opciones">
@@ -356,6 +337,7 @@
             <label><input type="checkbox" name="explorar[]" value="sombra"> Mi sombra</label>
         </div>
 
+        <!-- SECCIÓN 2 -->
         <h2>2. Tu mundo interior</h2>
         <p class="descripcion">¿Cómo te sientes contigo mismo/a actualmente?</p>
         <div class="opciones">
@@ -393,6 +375,7 @@
             <label><input type="checkbox" name="emocion_comprender[]" value="culpa"> Culpa</label>
         </div>
 
+        <!-- SECCIÓN 3 -->
         <h2>3. Lo que deseas explorar</h2>
         <p class="descripcion">Si pudieras obtener claridad sobre una sola cosa durante esta experiencia, ¿qué sería?</p>
         <div class="opciones">
@@ -421,17 +404,47 @@
             <label><input type="checkbox" name="relacion_actual[]" value="cambio"> Estoy en cambio</label>
         </div>
 
+        <!-- SECCIÓN 4 (AHORA SELECCIÓN MÚLTIPLE) -->
         <h2>4. Tu intención</h2>
         <p class="descripcion">Completa las siguientes frases:</p>
-        <label>Durante esta meditación quiero permitirme…</label>
-        <textarea name="permitirme" required placeholder="Ej: Soltar el control..."></textarea>
-        <label>Estoy dispuesto/a a mirar…</label>
-        <textarea name="mirar" required placeholder="Ej: Mis heridas..."></textarea>
-        <label>Me gustaría aprender sobre mí…</label>
-        <textarea name="aprender_mi" required placeholder="Ej: Por qué reacciono así..."></textarea>
-        <label>Me gustaría regresar de esta experiencia con…</label>
-        <textarea name="regresar_con" required placeholder="Ej: Paz interior..."></textarea>
+        
+        <p class="descripcion">Durante esta meditación quiero permitirme…</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="permitirme[]" value="soltar_control"> Soltar el control</label>
+            <label><input type="checkbox" name="permitirme[]" value="sentir"> Sentir sin juzgar</label>
+            <label><input type="checkbox" name="permitirme[]" value="descansar"> Descansar profundamente</label>
+            <label><input type="checkbox" name="permitirme[]" value="abrirme"> Abrirme a lo desconocido</label>
+            <label><input type="checkbox" name="permitirme[]" value="confiar"> Confiar en el proceso</label>
+        </div>
 
+        <p class="descripcion">Estoy dispuesto/a a mirar…</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="mirar[]" value="heridas"> Mis heridas</label>
+            <label><input type="checkbox" name="mirar[]" value="miedos"> Mis miedos</label>
+            <label><input type="checkbox" name="mirar[]" value="patrones"> Mis patrones</label>
+            <label><input type="checkbox" name="mirar[]" value="sombras"> Mis sombras</label>
+            <label><input type="checkbox" name="mirar[]" value="verdades"> Mis verdades</label>
+        </div>
+
+        <p class="descripcion">Me gustaría aprender sobre mí…</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="aprender_mi[]" value="reacciones"> Por qué reacciono así</label>
+            <label><input type="checkbox" name="aprender_mi[]" value="limites"> Mis límites</label>
+            <label><input type="checkbox" name="aprender_mi[]" value="necesidades"> Mis necesidades</label>
+            <label><input type="checkbox" name="aprender_mi[]" value="fortalezas"> Mis fortalezas</label>
+            <label><input type="checkbox" name="aprender_mi[]" value="deseos"> Mis deseos profundos</label>
+        </div>
+
+        <p class="descripcion">Me gustaría regresar de esta experiencia con…</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="regresar_con[]" value="paz"> Paz interior</label>
+            <label><input type="checkbox" name="regresar_con[]" value="claridad"> Claridad mental</label>
+            <label><input type="checkbox" name="regresar_con[]" value="conexion"> Conexión espiritual</label>
+            <label><input type="checkbox" name="regresar_con[]" value="fortaleza"> Fortaleza emocional</label>
+            <label><input type="checkbox" name="regresar_con[]" value="gratitud"> Gratitud</label>
+        </div>
+
+        <!-- SECCIÓN 5 -->
         <h2>5. Tus expectativas</h2>
         <p class="descripcion">¿Qué esperas encontrar durante esta experiencia?</p>
         <div class="opciones">
@@ -449,6 +462,7 @@
             <label><input type="checkbox" name="control[]" value="no_seguro"> No estoy seguro/a</label>
         </div>
 
+        <!-- SECCIÓN 6 -->
         <h2>6. Una mirada hacia adentro</h2>
         <p class="descripcion">Si pudieras sentarte frente a ti mismo/a durante unas horas, sin teléfono, sin trabajo, sin obligaciones y sin posibilidad de distraerte… ¿Qué crees que necesitarías decirte?</p>
         <div class="opciones">
@@ -459,6 +473,7 @@
             <label><input type="checkbox" name="decirte[]" value="confiar"> Necesito confiar</label>
         </div>
 
+        <!-- SECCIÓN 7 -->
         <h2>7. Después de la meditación</h2>
         <p class="descripcion">¿Qué aspecto de tu vida te gustaría cuidar, cambiar o comprender mejor después de esta experiencia?</p>
         <div class="opciones">
@@ -474,7 +489,7 @@
             <label><input type="checkbox" name="compromiso[]" value="meditar"> Meditar diariamente</label>
             <label><input type="checkbox" name="compromiso[]" value="escribir"> Escribir un diario</label>
             <label><input type="checkbox" name="compromiso[]" value="cuerpo"> Cuidar mi cuerpo</label>
-            <label><input type="checkbox" name="compromiso[]" value="límites"> Poner límites</label>
+            <label><input type="checkbox" name="compromiso[]" value="limites"> Poner límites</label>
             <label><input type="checkbox" name="compromiso[]" value="paz"> Buscar mi paz</label>
         </div>
 
@@ -487,12 +502,30 @@
             <label><input type="checkbox" name="recordar[]" value="fortaleza"> Mi fortaleza</label>
         </div>
 
-        <!-- SECCIÓN DE INTENCIÓN (ESCRITA) -->
+        <!-- MI INTENCIÓN (ESCRITA) -->
         <h2>Mi intención</h2>
         <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
         <textarea name="intencion_final" required placeholder="Escribe aquí tu intención..."></textarea>
 
-        <!-- DATOS DE CONTACTO (SIN CORREO) -->
+        <!-- TIPO DE RESERVA Y MÉTODO DE APORTE (AL FINAL) -->
+        <h2>Tipo de Reserva y Método de Aporte</h2>
+        <label>Tipo de Reserva *</label>
+        <select name="tipo_reserva" required>
+            <option value="">Selecciona una opción</option>
+            <option value="individual">Individual</option>
+            <option value="duo">Dúo</option>
+            <option value="ciclo">Ciclo de 4 Sesiones</option>
+            <option value="grupal">Grupal (3-5 personas)</option>
+        </select>
+
+        <label>¿Cómo realizarás tu aporte? *</label>
+        <select name="metodo_aporte" required>
+            <option value="">Selecciona una opción</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia Bancaria</option>
+        </select>
+
+        <!-- DATOS DE CONTACTO -->
         <h2>Datos de contacto</h2>
         <label>Nombre: *</label>
         <input type="text" name="nombre" required>
