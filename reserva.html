@@ -283,7 +283,7 @@
             Responde desde la honestidad.</p>
         </div>
 
-        <!-- AGENDA (TIPO, FECHA Y HORA) -->
+        <!-- CALENDARIO CON DISPONIBILIDAD LUNES A VIERNES -->
         <h2>Agenda tu experiencia</h2>
         <label>Selecciona el día de tu sesión *</label>
         
@@ -301,8 +301,8 @@
 
         <div class="horarios-disponibles" id="horariosDisponibles">
             <h4>Selecciona tu horario:</h4>
-            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '7:00 AM')">7:00 AM</button>
-            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '4:00 PM')">4:00 PM</button>
+            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '7:00 AM - 12:00 PM')">7:00 AM - 12:00 PM</button>
+            <button type="button" class="horario-btn" onclick="seleccionarHorario(this, '4:00 PM - 11:00 PM')">4:00 PM - 11:00 PM</button>
         </div>
 
         <input type="hidden" name="fecha_meditacion" id="fechaSeleccionada" required>
@@ -404,7 +404,7 @@
             <label><input type="checkbox" name="relacion_actual[]" value="cambio"> Estoy en cambio</label>
         </div>
 
-        <!-- SECCIÓN 4 (AHORA SELECCIÓN MÚLTIPLE) -->
+        <!-- SECCIÓN 4 (SELECCIÓN MÚLTIPLE) -->
         <h2>4. Tu intención</h2>
         <p class="descripcion">Completa las siguientes frases:</p>
         
@@ -507,7 +507,7 @@
         <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
         <textarea name="intencion_final" required placeholder="Escribe aquí tu intención..."></textarea>
 
-        <!-- TIPO DE RESERVA Y MÉTODO DE APORTE (AL FINAL) -->
+        <!-- TIPO DE RESERVA Y MÉTODO DE APORTE -->
         <h2>Tipo de Reserva y Método de Aporte</h2>
         <label>Tipo de Reserva *</label>
         <select name="tipo_reserva" required>
