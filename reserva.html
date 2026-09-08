@@ -566,32 +566,12 @@
         boton.textContent = body.classList.contains('modo-oscuro') ? '☀️' : '🌙';
     }
     
-    // LÓGICA DEL CALENDARIO (100% AUTOMÁTICO)
+    // LÓGICA DEL CALENDARIO (SIN LISTAS DE FECHAS - SIEMPRE FUNCIONA)
     let fechaActual = new Date();
     let mesActual = fechaActual.getMonth();
     let anioActual = fechaActual.getFullYear();
     let diaSeleccionado = null;
-    let diasDisponibles = [];
     const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-
-    // Generar automáticamente los días disponibles (lunes a viernes, para los próximos 60 días)
-    function generarDiasDisponibles() {
-        diasDisponibles = [];
-        let fecha = new Date();
-        let contador = 0;
-        while (contador < 60) {
-            let diaSemana = fecha.getDay();
-            if (diaSemana >= 1 && diaSemana <= 5) {
-                let dia = fecha.getDate();
-                let mes = fecha.getMonth() + 1;
-                let anio = fecha.getFullYear();
-                let fechaStr = anio + '-' + (mes < 10 ? '0' : '') + mes + '-' + (dia < 10 ? '0' : '') + dia;
-                diasDisponibles.push(fechaStr);
-            }
-            fecha.setDate(fecha.getDate() + 1);
-            contador++;
-        }
-    }
 
     function renderCalendario() {
         const grid = document.getElementById('calendarioGrid');
@@ -613,8 +593,10 @@
             div.className = 'dia';
             div.textContent = dia;
             
-            let fechaCompleta = anioActual + '-' + (mesActual + 1) + '-' + (dia < 10 ? '0' : '') + dia;
-            if (diasDisponibles.includes(fechaCompleta)) {
+            let fechaObjeto = new Date(anioActual, mesActual, dia);
+            let diaSemana = fechaObjeto.getDay(); // 0=Dom, 1=Lun, ..., 5=Vie, 6=Sáb
+            
+            if (diaSemana >= 1 && diaSemana <= 5) {
                 div.classList.add('disponible');
                 div.onclick = function() { seleccionarDia(this, dia); };
             } else {
@@ -646,8 +628,7 @@
         document.getElementById('horarioSeleccionado').value = horario;
     }
 
-    // Inicializar calendario SIN depender de Sheets
-    generarDiasDisponibles();
+    // Inicializar calendario
     renderCalendario();
 
     // CONEXIÓN A GOOGLE APPS SCRIPT + MODAL DE ÉXITO
