@@ -283,6 +283,17 @@
             Responde desde la honestidad.</p>
         </div>
 
+        <!-- NUEVO: TIPO DE RESERVA -->
+        <h2>Selecciona tu tipo de reserva</h2>
+        <label>Tipo de Reserva *</label>
+        <select name="tipo_reserva" required>
+            <option value="">Selecciona una opción</option>
+            <option value="individual">Individual</option>
+            <option value="duo">Dúo</option>
+            <option value="ciclo">Ciclo de 4 Sesiones</option>
+            <option value="grupal">Grupal (3-5 personas)</option>
+        </select>
+
         <h2>Agenda tu experiencia</h2>
         <label>Selecciona el día de tu sesión *</label>
         
@@ -307,86 +318,186 @@
         <input type="hidden" name="fecha_meditacion" id="fechaSeleccionada" required>
         <input type="hidden" name="horario_meditacion" id="horarioSeleccionado" required>
 
+        <!-- NUEVO: MÉTODO DE APORTE -->
+        <h2>Método de Aporte</h2>
+        <label>¿Cómo realizarás tu aporte? *</label>
+        <select name="metodo_aporte" required>
+            <option value="">Selecciona una opción</option>
+            <option value="efectivo">Efectivo</option>
+            <option value="transferencia">Transferencia Bancaria</option>
+        </select>
+
+        <!-- PREGUNTAS DE OPCIÓN MÚLTIPLE CON 5 OPCIONES (MÁS DE UNA) -->
         <h2>1. ¿Por qué estás aquí?</h2>
         <p class="descripcion">¿Qué te motivó a participar en esta meditación?</p>
-        <textarea name="motivacion" required placeholder="Ej: Siento que necesito un espacio para mí..."></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="motivacion[]" value="estres"> Estrés y ansiedad</label>
+            <label><input type="checkbox" name="motivacion[]" value="busqueda"> Búsqueda de sentido</label>
+            <label><input type="checkbox" name="motivacion[]" value="exploracion"> Exploración interior</label>
+            <label><input type="checkbox" name="motivacion[]" value="crecimiento"> Crecimiento personal</label>
+            <label><input type="checkbox" name="motivacion[]" value="reconexion"> Reconexión con la naturaleza</label>
+        </div>
+
         <p class="descripcion">¿Qué estás buscando en este momento de tu vida?</p>
-        <textarea name="buscando" required placeholder="Ej: Claridad, calma, respuestas..."></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="buscando[]" value="calma"> Calma y claridad</label>
+            <label><input type="checkbox" name="buscando[]" value="proposito"> Propósito de vida</label>
+            <label><input type="checkbox" name="buscando[]" value="sanacion"> Sanación emocional</label>
+            <label><input type="checkbox" name="buscando[]" value="conexion"> Conexión espiritual</label>
+            <label><input type="checkbox" name="buscando[]" value="liberacion"> Liberación de patrones</label>
+        </div>
+
         <p class="descripcion">¿Qué te gustaría explorar dentro de ti?</p>
-        <textarea name="explorar" required placeholder="Ej: Mis emociones, mis miedos, mi propósito..."></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="explorar[]" value="miedos"> Mis miedos</label>
+            <label><input type="checkbox" name="explorar[]" value="bloqueos"> Bloqueos emocionales</label>
+            <label><input type="checkbox" name="explorar[]" value="relaciones"> Mis relaciones</label>
+            <label><input type="checkbox" name="explorar[]" value="cuerpo"> La conexión con mi cuerpo</label>
+            <label><input type="checkbox" name="explorar[]" value="sombra"> Mi sombra</label>
+        </div>
 
         <h2>2. Tu mundo interior</h2>
         <p class="descripcion">¿Cómo te sientes contigo mismo/a actualmente?</p>
-        <textarea name="como_te_sientes" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="como_te_sientes[]" value="bien"> En paz</label>
+            <label><input type="checkbox" name="como_te_sientes[]" value="cansancio"> Cansado/a</label>
+            <label><input type="checkbox" name="como_te_sientes[]" value="ansioso"> Ansioso/a</label>
+            <label><input type="checkbox" name="como_te_sientes[]" value="confundido"> Confundido/a</label>
+            <label><input type="checkbox" name="como_te_sientes[]" value="desconectado"> Desconectado/a</label>
+        </div>
+
         <p class="descripcion">¿Qué aspecto de tu vida ocupa más espacio en tu mente últimamente?</p>
-        <textarea name="aspecto_mente" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="aspecto_mente[]" value="trabajo"> Trabajo</label>
+            <label><input type="checkbox" name="aspecto_mente[]" value="relaciones"> Relaciones</label>
+            <label><input type="checkbox" name="aspecto_mente[]" value="salud"> Salud</label>
+            <label><input type="checkbox" name="aspecto_mente[]" value="dinero"> Finanzas</label>
+            <label><input type="checkbox" name="aspecto_mente[]" value="futuro"> Futuro</label>
+        </div>
+
         <p class="descripcion">¿Hay algo que llevas tiempo evitando mirar?</p>
-        <textarea name="evitando_mirar" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="evitando_mirar[]" value="duelo"> Un duelo</label>
+            <label><input type="checkbox" name="evitando_mirar[]" value="miedo"> Un miedo</label>
+            <label><input type="checkbox" name="evitando_mirar[]" value="relacion"> Una relación</label>
+            <label><input type="checkbox" name="evitando_mirar[]" value="herida"> Una herida</label>
+            <label><input type="checkbox" name="evitando_mirar[]" value="decision"> Una decisión</label>
+        </div>
+
         <p class="descripcion">¿Existe alguna emoción que sientas que necesitas comprender mejor?</p>
-        <textarea name="emocion_comprender" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="emocion_comprender[]" value="tristeza"> Tristeza</label>
+            <label><input type="checkbox" name="emocion_comprender[]" value="ira"> Ira</label>
+            <label><input type="checkbox" name="emocion_comprender[]" value="miedo"> Miedo</label>
+            <label><input type="checkbox" name="emocion_comprender[]" value="soledad"> Soledad</label>
+            <label><input type="checkbox" name="emocion_comprender[]" value="culpa"> Culpa</label>
+        </div>
 
         <h2>3. Lo que deseas explorar</h2>
         <p class="descripcion">Si pudieras obtener claridad sobre una sola cosa durante esta experiencia, ¿qué sería?</p>
-        <textarea name="claridad" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="claridad[]" value="proposito"> Mi propósito</label>
+            <label><input type="checkbox" name="claridad[]" value="relaciones"> Mis relaciones</label>
+            <label><input type="checkbox" name="claridad[]" value="trabajo"> Mi carrera</label>
+            <label><input type="checkbox" name="claridad[]" value="salud"> Mi salud</label>
+            <label><input type="checkbox" name="claridad[]" value="espiritualidad"> Mi espiritualidad</label>
+        </div>
+
         <p class="descripcion">¿Hay algo que quieras soltar, aceptar, perdonar o transformar?</p>
-        <textarea name="soltar" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="soltar[]" value="pasan"> El pasado</label>
+            <label><input type="checkbox" name="soltar[]" value="rencor"> Rencor</label>
+            <label><input type="checkbox" name="soltar[]" value="patrones"> Patrones</label>
+            <label><input type="checkbox" name="soltar[]" value="miedos"> Miedos</label>
+            <label><input type="checkbox" name="soltar[]" value="expectativas"> Expectativas</label>
+        </div>
+
         <p class="descripcion">¿Qué relación tienes actualmente contigo mismo/a?</p>
         <div class="opciones">
-            <label><input type="checkbox" name="relacion" value="amor"> Me trato con amor</label>
-            <label><input type="checkbox" name="relacion" value="aceptarme"> Estoy aprendiendo a aceptarme</label>
-            <label><input type="checkbox" name="relacion" value="exigente"> Soy muy exigente conmigo</label>
-            <label><input type="checkbox" name="relacion" value="comprenderme"> Me cuesta comprenderme</label>
-            <label><input type="checkbox" name="relacion" value="cambio"> Estoy atravesando un cambio</label>
-            <label><input type="text" name="relacion_otra" placeholder="Otra:"></label>
+            <label><input type="checkbox" name="relacion_actual[]" value="amor"> Me trato con amor</label>
+            <label><input type="checkbox" name="relacion_actual[]" value="aceptarme"> Estoy aprendiendo a aceptarme</label>
+            <label><input type="checkbox" name="relacion_actual[]" value="exigente"> Soy muy exigente</label>
+            <label><input type="checkbox" name="relacion_actual[]" value="dificil"> Me cuesta comprenderme</label>
+            <label><input type="checkbox" name="relacion_actual[]" value="cambio"> Estoy en cambio</label>
         </div>
 
         <h2>4. Tu intención</h2>
         <p class="descripcion">Completa las siguientes frases:</p>
         <label>Durante esta meditación quiero permitirme…</label>
-        <input type="text" name="permitirme" required placeholder="Ej: Soltar el control...">
+        <textarea name="permitirme" required placeholder="Ej: Soltar el control..."></textarea>
         <label>Estoy dispuesto/a a mirar…</label>
-        <input type="text" name="mirar" required placeholder="Ej: Mis heridas...">
+        <textarea name="mirar" required placeholder="Ej: Mis heridas..."></textarea>
         <label>Me gustaría aprender sobre mí…</label>
-        <input type="text" name="aprender_mi" required placeholder="Ej: Por qué reacciono así...">
+        <textarea name="aprender_mi" required placeholder="Ej: Por qué reacciono así..."></textarea>
         <label>Me gustaría regresar de esta experiencia con…</label>
-        <input type="text" name="regresar_con" required placeholder="Ej: Paz interior...">
+        <textarea name="regresar_con" required placeholder="Ej: Paz interior..."></textarea>
 
         <h2>5. Tus expectativas</h2>
         <p class="descripcion">¿Qué esperas encontrar durante esta experiencia?</p>
-        <textarea name="esperas_encontrar" required></textarea>
-        <p class="descripcion">¿Qué pasaría si no recibieras una respuesta inmediata a aquello que estás buscando?</p>
-        <textarea name="sin_respuesta" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="esperas_encontrar[]" value="paz"> Paz interior</label>
+            <label><input type="checkbox" name="esperas_encontrar[]" value="respuestas"> Respuestas</label>
+            <label><input type="checkbox" name="esperas_encontrar[]" value="conexion"> Conexión profunda</label>
+            <label><input type="checkbox" name="esperas_encontrar[]" value="liberacion"> Liberación</label>
+            <label><input type="checkbox" name="esperas_encontrar[]" value="comprension"> Comprensión</label>
+        </div>
+
         <p class="descripcion">¿Estás dispuesto/a a permitir que la experiencia se desarrolle sin intentar controlar completamente lo que ocurre?</p>
-        <select name="control" required>
-            <option value="">Selecciona una opción</option>
-            <option value="si">Sí</option>
-            <option value="no">No</option>
-            <option value="no_seguro">No estoy seguro/a</option>
-        </select>
+        <div class="opciones">
+            <label><input type="checkbox" name="control[]" value="si"> Sí, estoy dispuesto/a</label>
+            <label><input type="checkbox" name="control[]" value="no"> No</label>
+            <label><input type="checkbox" name="control[]" value="no_seguro"> No estoy seguro/a</label>
+        </div>
 
         <h2>6. Una mirada hacia adentro</h2>
         <p class="descripcion">Si pudieras sentarte frente a ti mismo/a durante unas horas, sin teléfono, sin trabajo, sin obligaciones y sin posibilidad de distraerte… ¿Qué crees que necesitarías decirte?</p>
-        <textarea name="decirte" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="decirte[]" value="perdon"> Necesito perdonarme</label>
+            <label><input type="checkbox" name="decirte[]" value="descanso"> Necesito descansar</label>
+            <label><input type="checkbox" name="decirte[]" value="amor"> Necesito amarme</label>
+            <label><input type="checkbox" name="decirte[]" value="valor"> Necesito valorarme</label>
+            <label><input type="checkbox" name="decirte[]" value="confiar"> Necesito confiar</label>
+        </div>
 
         <h2>7. Después de la meditación</h2>
         <p class="descripcion">¿Qué aspecto de tu vida te gustaría cuidar, cambiar o comprender mejor después de esta experiencia?</p>
-        <textarea name="cuidar_despues" required></textarea>
-        <p class="descripcion">¿Qué compromiso contigo mismo/a te gustaría llevarte?</p>
-        <textarea name="compromiso" required></textarea>
-        <p class="descripcion">¿Qué te gustaría recordar cuando regreses a tu vida cotidiana?</p>
-        <textarea name="recordar" required></textarea>
+        <div class="opciones">
+            <label><input type="checkbox" name="cuidar_despues[]" value="salud"> Mi salud</label>
+            <label><input type="checkbox" name="cuidar_despues[]" value="relaciones"> Mis relaciones</label>
+            <label><input type="checkbox" name="cuidar_despues[]" value="trabajo"> Mi trabajo</label>
+            <label><input type="checkbox" name="cuidar_despues[]" value="paz"> Mi paz interior</label>
+            <label><input type="checkbox" name="cuidar_despues[]" value="vida"> Mi vida en general</label>
+        </div>
 
+        <p class="descripcion">¿Qué compromiso contigo mismo/a te gustaría llevarte?</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="compromiso[]" value="meditar"> Meditar diariamente</label>
+            <label><input type="checkbox" name="compromiso[]" value="escribir"> Escribir un diario</label>
+            <label><input type="checkbox" name="compromiso[]" value="cuerpo"> Cuidar mi cuerpo</label>
+            <label><input type="checkbox" name="compromiso[]" value="límites"> Poner límites</label>
+            <label><input type="checkbox" name="compromiso[]" value="paz"> Buscar mi paz</label>
+        </div>
+
+        <p class="descripcion">¿Qué te gustaría recordar cuando regreses a tu vida cotidiana?</p>
+        <div class="opciones">
+            <label><input type="checkbox" name="recordar[]" value="calma"> La calma que sentí</label>
+            <label><input type="checkbox" name="recordar[]" value="conexion"> La conexión conmigo</label>
+            <label><input type="checkbox" name="recordar[]" value="perspectiva"> La nueva perspectiva</label>
+            <label><input type="checkbox" name="recordar[]" value="gratitud"> La gratitud</label>
+            <label><input type="checkbox" name="recordar[]" value="fortaleza"> Mi fortaleza</label>
+        </div>
+
+        <!-- SECCIÓN DE INTENCIÓN (ESCRITA) -->
         <h2>Mi intención</h2>
         <label>Completa esta frase: “Mi intención para esta meditación es…”</label>
         <textarea name="intencion_final" required placeholder="Escribe aquí tu intención..."></textarea>
 
+        <!-- DATOS DE CONTACTO (SIN CORREO) -->
         <h2>Datos de contacto</h2>
         <label>Nombre: *</label>
         <input type="text" name="nombre" required>
         <label>Número de WhatsApp: *</label>
         <input type="tel" name="whatsapp" placeholder="Ej: +1 809 457 9494" required>
-        <label>Correo electrónico: </label>
-        <input type="email" name="email">
 
         <div class="cierre">
             <p>No necesitas encontrar todas las respuestas hoy.<br>
@@ -438,7 +549,6 @@
                 renderCalendario();
             })
             .catch(error => {
-                // Lista de respaldo: Incluye el día 4
                 diasDisponibles = [1, 3, 4, 5, 8, 10, 12, 15, 17, 19, 22, 24, 26, 29];
                 renderCalendario();
             });
@@ -507,14 +617,12 @@
         e.preventDefault();
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
-                // Mostrar el modal de éxito
                 document.getElementById('successModal').classList.add('show');
                 form.reset();
             })
             .catch(error => alert('¡Error! No se pudo enviar la reserva.'));
     });
 
-    // Función para cerrar el modal
     function closeModal() {
         document.getElementById('successModal').classList.remove('show');
     }
